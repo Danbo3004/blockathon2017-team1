@@ -12,6 +12,7 @@ import { AuthenticationGuard } from './guards/authentication.guard';
 import { WalletService } from './services/wallet.service';
 import { HomeService } from './services/home.service';
 import { InternalHomeService } from './services/internal-home.service';
+import { Web3Service } from './services/web3.service';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { InternalHomeService } from './services/internal-home.service';
     AuthenticationGuard,
     WalletService,
     { provide: HomeService, useClass: InternalHomeService },
+    Web3Service
   ],
   bootstrap: [AppComponent],
 })

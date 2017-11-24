@@ -8,13 +8,12 @@ export class WalletService {
 
   constructor() { }
 
-  unlockWalletFile(keyStore: File, password: string): Observable<any> {
+  unlockWalletFile(keyStore: File, password: string): Observable<Wallet> {
     const fileReader = new FileReader();
     return Observable.fromPromise(new Promise((resolve, reject) => {
       fileReader.onload = (event: Event) => {
         try {
-          const wallet = Wallet.fromV3(fileReader.result.toLowerCase(), password);
-          resolve(wallet);
+          resolve(Wallet.fromV3(fileReader.result.toLowerCase(), password));
         } catch (error) {
           reject(error);
         }

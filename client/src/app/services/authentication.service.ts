@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { LoginRequest, LoginResponse } from '../models/login';
+import { EthereumTx } from 'ethereumjs-tx';
 
 @Injectable()
 export class AuthenticationService {
@@ -15,5 +14,13 @@ export class AuthenticationService {
 
   set wallet(wallet: any) {
     this.currentWallet = wallet;
+  }
+
+  signTransaction(tx: EthereumTx) {
+    if (!this.wallet) {
+      throw new Error('No wallet to use.');
+    }
+
+    tx.sign(this.currentWallet.getPrivateKey());
   }
 }
