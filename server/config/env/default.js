@@ -2,9 +2,9 @@
 
 module.exports = {
     app: {
-        title: 'Transformation AI',
-        description: 'RP data',
-        keywords: 'express, angular 2 js, node.js, mysql, passport'
+        title: 'C2C Proof of Concept',
+        description: 'Ride sharing decentralized app',
+        keywords: 'express, angular x js, node.js, postgrl, blockchain, etherum'
     },
     port: 3000,
     logo: 'modules/core/client/img/brand/logo.png',
