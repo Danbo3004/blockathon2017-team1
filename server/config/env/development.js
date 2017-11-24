@@ -9,10 +9,6 @@ module.exports = {
     app: {
         title: defaultEnvConfig.app.title + ' - Development Environment'
     },
-    firebase: {
-        api_key : 'AIzaSyC6qjoweM6N-wIUGprxIcfF2Vqj96HgCig',
-        host: 'https://salesforce-3e649.firebaseio.com/'
-    },
     mailer: {
         from: process.env.MAILER_FROM || 'MAILER_FROM',
         options: {
