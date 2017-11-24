@@ -1,0 +1,38 @@
+.consumer-container {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+
+.consumer-container .nav-bar {
+    height: 75px
+}
+
+.consumer-container .search-container {
+    height: calc(100% - 45px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.consumer-container .search-container .container {
+    width: 60%;
+    margin-top: -50px;
+}
+
+.consumer-container .search-container .container .introduce {
+    margin-bottom: 15px;
+}
+
+.consumer-container .search-container .container .introduce h3, .consumer-container .search-container .container .introduce h4{
+    margin: 0;
+}
+
+.consumer-container .search-container .container .ui.icon.input {
+    width: 100%;
+}
+
+.consumer-container .nav-bar ul.menu-list li {
+    margin-right: 10px;
+    display: inline-block;
+}
