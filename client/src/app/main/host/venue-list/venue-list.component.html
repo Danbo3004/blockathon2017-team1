@@ -1,3 +1,11 @@
-<p>
-  venue-list works!
-</p>
+<div class="ui middle aligned divided list">
+  <div *ngFor="let venue of venues" class="item">
+    <div class="right floated content">
+      <i class="write icon"></i>
+    </div>
+    <div class="content">
+      <a [routerLink]="['..', 'venue', venue.contractAddress]">{{ venue.name }}</a>
+      <div class="description">{{ venue.description }}</div>
+    </div>
+  </div>
+</div>

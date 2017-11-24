@@ -9,8 +9,8 @@ export const routes: Routes = [
   { path: '', component: DashboardComponent },
   { path: 'venues', component: VenueListComponent },
   { path: 'venue/new', component: EditVenueComponent },
-  { path: 'venue/:id/edit', component: EditVenueComponent },
-  { path: 'venues/:id', component: ViewVenueComponent },
+  { path: 'venue/:contractAddress/edit', component: EditVenueComponent },
+  { path: 'venue/:contractAddress', component: ViewVenueComponent },
 ];
 
 @NgModule({

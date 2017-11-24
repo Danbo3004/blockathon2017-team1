@@ -12,6 +12,7 @@ import { ViewVenueComponent } from './view-venue/view-venue.component';
     CommonModule,
     HostRoutingModule
   ],
-  declarations: [VenueListComponent, DashboardComponent, HostLayoutComponent, EditVenueComponent, ViewVenueComponent]
+  declarations: [VenueListComponent, DashboardComponent, HostLayoutComponent, EditVenueComponent, ViewVenueComponent],
+  providers: []
 })
 export class HostModule { }

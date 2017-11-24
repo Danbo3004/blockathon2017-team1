@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { AuthenticationService } from '../services/authentication.service';
 import { AuthenticationGuard } from '../guards/authentication.guard';
 import { WalletService } from '../services/wallet.service';
+import { VenueService } from '../services/venue.service';
+import { InternalVenueService } from '../services/internal-venue.service';
 
 @NgModule({
   imports: [
@@ -15,7 +17,8 @@ import { WalletService } from '../services/wallet.service';
   providers: [
     AuthenticationService,
     AuthenticationGuard,
-    WalletService
+    WalletService,
+    { provide: VenueService, useClass: InternalVenueService }
   ]
 })
 export class SharedModule { }
