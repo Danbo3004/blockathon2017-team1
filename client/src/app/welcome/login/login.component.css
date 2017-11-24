@@ -1,0 +1,11 @@
+.login-container {
+  min-height: 100vh;
+}
+
+.column {
+  max-width: 450px;
+}
+
+.login-input-file-upload {
+  display: none;
+}

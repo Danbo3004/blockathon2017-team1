@@ -1,0 +1,28 @@
+<div class="login-container ui middle aligned center aligned grid">
+  <div class="column">
+    <h2 class="ui teal image header">
+      <div class="content">
+        Use your wallet to login
+      </div>
+    </h2>
+    <form class="ui large form">
+      <div class="ui segment">
+        <div class="field">
+          <div class="ui action input">
+            <input (click)="onBrowseClicked(true, $event)" [placeholder]="keyStoreFileName || 'Browse your wallet file...'" type="text" name="fileName" readonly>
+            <input #fileInput (change)="onFileChanged()" type="file" name="fileInput" class="login-input-file-upload" />
+            <button (click)="onBrowseClicked(false, $event)" class="ui button">{{ keyStoreFile ? 'Clear' : 'Browse' }}</button>
+          </div>
+        </div>
+        <div *ngIf="keyStoreFile" class="field">
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            <input [(ngModel)]="password" (keypress)="onPasswordInputKeyPressed($event)" type="password" name="password" placeholder="Password">
+          </div>
+        </div>
+        <div *ngIf="keyStoreFile" (click)="onUnlockClicked()" class="ui fluid large teal submit button">Unlock</div>
+      </div>
+    </form>
+    <div *ngIf="error" class="ui error message">{{ error }}</div>
+  </div>
+</div>
