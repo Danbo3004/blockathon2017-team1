@@ -6,11 +6,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HostLayoutComponent } from './layout/layout.component';
 import { EditHomeComponent } from './edit-home/edit-home.component';
 import { ViewHomeComponent } from './view-home/view-home.component';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    HostRoutingModule
+    HostRoutingModule,
+    SharedModule
   ],
   declarations: [HomeListComponent, DashboardComponent, HostLayoutComponent, EditHomeComponent, ViewHomeComponent],
   providers: []

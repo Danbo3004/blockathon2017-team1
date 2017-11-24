@@ -18,4 +18,12 @@ export class InternalHomeService extends HomeService {
   getHome(address: string): Observable<Home> {
     return this.http.get('assets/data/homes.json').map(homes => <Home>homes[0]);
   }
+
+  newHome(data: any): Observable<Home> {
+    return undefined;
+  }
+
+  updateHome(contractAddress: string, data: any): Observable<Home> {
+    return undefined;
+  }
 }

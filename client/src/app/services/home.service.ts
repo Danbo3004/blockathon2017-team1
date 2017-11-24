@@ -10,4 +10,8 @@ export abstract class HomeService {
   public abstract getHomes(host: string): Observable<Home[]>;
 
   public abstract getHome(address: string): Observable<Home>;
+
+  public abstract newHome(data: any): Observable<Home>;
+
+  public abstract updateHome(contractAddress: string, data: any): Observable<Home>;
 }

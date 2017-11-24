@@ -7,10 +7,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { WelcomeModule } from './welcome/welcome.module';
 import { SharedModule } from './shared/shared.module';
 import { MainModule } from './main/main.module';
+import { AuthenticationService } from './services/authentication.service';
+import { AuthenticationGuard } from './guards/authentication.guard';
+import { WalletService } from './services/wallet.service';
+import { HomeService } from './services/home.service';
+import { InternalHomeService } from './services/internal-home.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -18,9 +23,14 @@ import { MainModule } from './main/main.module';
     WelcomeModule,
     AppRoutingModule,
     SharedModule,
-    MainModule
+    MainModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    AuthenticationService,
+    AuthenticationGuard,
+    WalletService,
+    { provide: HomeService, useClass: InternalHomeService },
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
