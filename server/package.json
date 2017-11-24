@@ -1,0 +1,39 @@
+{
+  "name": "c2c_poc",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "dependencies": {
+    "body-parser": "~1.10.2",
+    "cookie-parser": "~1.3.3",
+    "cron": "^1.1.1",
+    "debug": "~2.1.1",
+    "express": "~4.11.1",
+    "express-jwt": "^3.0.1",
+    "express-validator": "^3.0.0",
+    "jade": "~1.9.1",
+    "jsonformatter": "^0.6.0",
+    "jsonwebtoken": "^5.0.4",
+    "lodash": "^4.17.4",
+    "morgan": "~1.5.1",
+    "pg": "^7.4.0",
+    "pg-hstore": "^2.3.2",
+    "querystring": "^0.2.0",
+    "sequelize": "^4.22.15",
+    "serve-favicon": "~2.2.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-jshint": "^2.0.1",
+    "gulp-ng-annotate": "^1.1.0",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-uglify": "^1.2.0",
+    "gulp-watch": "^4.3.4",
+    "jshint": "^2.9.3",
+    "jshint-stylish": "^2.2.1",
+    "nodemon": "^1.11.0"
+  }
+}
