@@ -1,0 +1,18 @@
+[
+  {
+    "contractAddress": "12345",
+    "name": "Romantic Suite in family home in Valparaiso, Chile",
+    "description": "We offer a beautiful and romantic Suite with view to the Pacific Ocean in a family home in the UNESCO Heritage city of Valparaiso, Chile, South America. We are close to the city center and most attractive touristic sites and we have good connectivity with local transport. Be guest in a lovely old house that has more than 100 years of history and that is the home of four generations with different nationalities.",
+    "address": "",
+    "capacity": {
+      "guests": 2,
+      "bedroom": 1,
+      "bed": 1,
+      "bath": 1
+    },
+    "feature": {
+      "internet": true
+    },
+    "price": 1
+  }
+]

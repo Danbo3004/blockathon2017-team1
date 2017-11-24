@@ -1,0 +1,11 @@
+<div class="ui middle aligned divided list">
+  <div *ngFor="let home of homes" class="item">
+    <div class="right floated content">
+      <i class="write icon"></i>
+    </div>
+    <div class="content">
+      <a [routerLink]="['..', 'home', home.contractAddress]">{{ home.name }}</a>
+      <div class="description">{{ home.description }}</div>
+    </div>
+  </div>
+</div>
