@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { VenueListComponent } from './venue-list/venue-list.component';
-import { EditVenueComponent } from './edit-venue/edit-venue.component';
-import { ViewVenueComponent } from './view-venue/view-venue.component';
+import { HomeListComponent } from './home-list/home-list.component';
+import { EditHomeComponent } from './edit-home/edit-home.component';
+import { ViewHomeComponent } from './view-home/view-home.component';
 
 export const routes: Routes = [
   { path: '', component: DashboardComponent },
-  { path: 'venues', component: VenueListComponent },
-  { path: 'venue/new', component: EditVenueComponent },
-  { path: 'venue/:contractAddress/edit', component: EditVenueComponent },
-  { path: 'venue/:contractAddress', component: ViewVenueComponent },
+  { path: 'homes', component: HomeListComponent },
+  { path: 'home/new', component: EditHomeComponent },
+  { path: 'home/:contractAddress/edit', component: EditHomeComponent },
+  { path: 'home/:contractAddress', component: ViewHomeComponent },
 ];
 
 @NgModule({

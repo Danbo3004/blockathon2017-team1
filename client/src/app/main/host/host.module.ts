@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HostRoutingModule } from './host-routing.module';
-import { VenueListComponent } from './venue-list/venue-list.component';
+import { HomeListComponent } from './home-list/home-list.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HostLayoutComponent } from './layout/layout.component';
-import { EditVenueComponent } from './edit-venue/edit-venue.component';
-import { ViewVenueComponent } from './view-venue/view-venue.component';
+import { EditHomeComponent } from './edit-home/edit-home.component';
+import { ViewHomeComponent } from './view-home/view-home.component';
 
 @NgModule({
   imports: [
     CommonModule,
     HostRoutingModule
   ],
-  declarations: [VenueListComponent, DashboardComponent, HostLayoutComponent, EditVenueComponent, ViewVenueComponent],
+  declarations: [HomeListComponent, DashboardComponent, HostLayoutComponent, EditHomeComponent, ViewHomeComponent],
   providers: []
 })
 export class HostModule { }
