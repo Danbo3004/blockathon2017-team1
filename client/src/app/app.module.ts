@@ -7,12 +7,12 @@ import { WelcomeModule } from './welcome/welcome.module';
 import { SharedModule } from './shared/shared.module';
 import { MainModule } from './main/main.module';
 import { ConsumerModule } from './consumer/consumer.module';
-import { ConsumerLayoutComponent } from './consumer-layout/consumer-layout.component';
+import { ConsumerSearchItemComponent } from './consumer-search-item/consumer-search-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ConsumerLayoutComponent
+    ConsumerSearchItemComponent,
   ],
   imports: [
     BrowserModule,

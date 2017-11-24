@@ -1,0 +1,68 @@
+<div class="ui secondary menu grid">
+  <div class="two wide column">
+    <strong>C2C Proof of Concept</strong>
+  </div>
+  <div class="nine wide column">
+    <div class="ui icon input">
+      <input type="text" placeholder="Search...">
+      <i class="search link icon"></i>
+    </div>
+    <i class="options icon" (click)="onShowFilter()"></i>
+  </div>
+  <div class="four wide column">
+    <nav>
+      <ul class="menu-list">
+        <li>
+          <a href="#">Become a host</a>
+        </li>
+        <li>
+          <a href="#">Log in</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+<div class="filter-container ui grid" *ngIf="showFilter">
+  <div class="six wide column">
+    <div class="ui grid date">
+      <div class="eight wide column">
+        <div class="ui calendar" id="rangestart" #rangestart>
+          <div class="ui input left icon">
+            <i class="calendar icon"></i>
+            <input type="text" placeholder="Check in">
+          </div>
+        </div>
+      </div>
+      <div class="eight wide column">
+        <div class="ui calendar" id="rangeend" #rangeend>
+          <div class="ui input left icon">
+            <i class="calendar icon"></i>
+            <input type="text" placeholder="Check out">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="two wide column guests">
+    <div class="ui right labeled input">
+      <input type="number" placeholder="Enter number..">
+      <div class="ui basic label">
+        Guests
+      </div>
+    </div>
+  </div>
+  <div class="two wide column"></div>
+  <div class="six wide column price">
+    <div class="ui grid">
+      <div class="six wide column">
+        <div class="ui input">
+            <input type="number" placeholder="From price">
+        </div>
+      </div>
+      <div class="six wide column">
+          <div class="ui input">
+              <input type="number" placeholder="To price">
+          </div>
+    </div>
+  </div>
+</div>

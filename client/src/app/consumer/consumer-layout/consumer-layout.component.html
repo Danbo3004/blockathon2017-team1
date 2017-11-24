@@ -1,0 +1,8 @@
+<div class="consumer-layout-container">
+  <div class="navbar-container" [class.hasFilter]="showFilter">
+    <app-consumer-navbar [(showFilter)]="showFilter"></app-consumer-navbar>
+  </div>
+  <div class="content-container" [class.hasFilter]="showFilter">
+    <router-outlet></router-outlet>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+.consumer-layout-container {
+    width: 100%;
+    height: 100%;
+}
+
+.consumer-layout-container .navbar-container {
+    height: 75px;
+    width: 100%;
+}
+
+.consumer-layout-container .navbar-container.hasFilter {
+    height: 140px;
+}
+
+.consumer-layout-container .content-container {
+    height: calc(100% - 45px);
+}
+
+.consumer-layout-container .content-container.hasFilter {
+    height: calc(100% - 110px);
+}

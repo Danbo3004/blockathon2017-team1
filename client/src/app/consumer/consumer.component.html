@@ -25,8 +25,8 @@
         <h4>enjoy like your house...</h4>
       </div>
       <div class="ui icon input">
-        <input type="text" placeholder='Try "Ho Chi Minh city"'>
-        <i class="search icon"></i>
+        <input type="text" placeholder='Try "Ho Chi Minh city"' (keyup.enter)="onSearch()">
+        <i class="search icon" (click)="onSearch()"></i>
       </div>
     </div>
   </div>
