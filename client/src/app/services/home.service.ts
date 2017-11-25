@@ -5,7 +5,17 @@ import { web3 } from './web3.service';
 import { environment } from '../../environments/environment';
 import { AuthenticationService } from './authentication.service';
 import Tx from 'ethereumjs-tx';
-export const HomeContract = new web3.eth.contract(environment.homeContractAbi);
+
+export const HomeContract = web3.eth.contract(environment.homeContractAbi);
+const HomeContractEvent = web3.eth.contract(environment.homeContractEventAbi);
+
+const homeContractEventInstance = HomeContractEvent.at(environment.homeContractEventAddress);
+homeContractEventInstance.allEvents(function (error, log) {
+  debugger;
+  if (!error) {
+    console.log(log);
+  }
+});
 
 @Injectable()
 export abstract class HomeService {
@@ -24,7 +34,7 @@ export abstract class HomeService {
       const from = '0x' + this.authenticationService.wallet.getAddress().toString('hex');
       const gas = web3.toHex(web3.eth.estimateGas({ data: environment.homeContractCode }));
       const gasPrice = web3.toHex(environment.defaultGasPrice);
-      const data = HomeContract.new.getData(home.name, home.description, home.address.streetAddress, home.price, {
+      const data = HomeContract.new.getData(home.name, home.description, home.streetAddress, home.price, {
         data: environment.homeContractCode
       });
 

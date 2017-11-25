@@ -12,7 +12,7 @@ let config = require('./appConfig'),
   routesApi = require('../routes/index'),
   validator = require('express-validator'),
   constant = require('../const/siteconst'),
-  web3 = require('../web3');
+  web3 = require('../web3/index');
 
 module.exports.start = function start() {
   let app = express();

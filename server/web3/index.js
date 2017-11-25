@@ -1,6 +1,6 @@
 let Web3 = require('web3');
 let config = require('../config/appConfig');
-let models = require('../models');
+let models = require('../models/index');
 
 let web3 = new Web3(new Web3.providers.HttpProvider(config.networkUrl));
 

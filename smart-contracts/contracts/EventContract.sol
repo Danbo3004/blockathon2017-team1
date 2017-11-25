@@ -7,6 +7,7 @@ contract EventContract {
         owner = msg.sender;
     }
 
+    event NewHome(address _contractAddress, address _owner, string _name, string _description, string _streetAddress, uint _price);
     event UpdateInfo(address caller, string _name, string _description, string _streetAddress, uint _price);
     event UpdateCapacity(address caller, uint _guests, uint _bed, uint _bedroom, uint _bathroom);
     event UpdateFeature(address caller, bool _internet, bool _kitchen, bool _iron, bool _hangers);
@@ -15,6 +16,10 @@ contract EventContract {
     event Checkin(address caller, bytes32 _bookDataHash, uint _checkinAt);
     event Checkout(address caller, bytes32 _bookDataHash, uint _checkoutAt);
     event RequireResolve(address caller, bytes32 _bookDataHash, string _message);
+
+    function newHome(address _owner, string _name, string _description, string _streetAddress, uint _price) public {
+        NewHome(msg.sender, _owner, _name, _description, _streetAddress, _price);
+    }
     
     function updateInfo(string _name, string _description, string _streetAddress, uint _price) public {
         UpdateInfo(msg.sender, _name, _description, _streetAddress, _price);
