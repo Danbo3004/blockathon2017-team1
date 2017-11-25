@@ -7,13 +7,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./consumer.component.css']
 })
 export class ConsumerComponent implements OnInit {
-
+  key: string = '';
   constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
   onSearch () {
-    this.router.navigate(['consumer', 's']);
+    this.router.navigate(['consumer', 's'], { queryParams: { k: this.key }});
   }
 }

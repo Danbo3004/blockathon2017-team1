@@ -23,7 +23,7 @@
         <h4>enjoy like your house...</h4>
       </div>
       <div class="ui icon input">
-        <input type="text" placeholder='Try "Ho Chi Minh city"' (keyup.enter)="onSearch()">
+        <input type="text" placeholder='Try "Ho Chi Minh city"' (keyup.enter)="onSearch()" [(ngModel)]="key">
         <i class="search icon" (click)="onSearch()"></i>
       </div>
     </div>

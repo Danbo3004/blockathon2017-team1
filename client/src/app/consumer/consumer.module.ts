@@ -17,15 +17,18 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ConsumerSearchItemComponent } from './consumer-search-item/consumer-search-item.component';
 import { MatCardModule } from '@angular/material/card';
+import { ConsumerService } from '../services/consumer.service';
+import { TruncateModule } from 'ng2-truncate';
 
 @NgModule({
   imports: [
     CommonModule, RouterModule, MatIconModule, SharedModule, StarRatingModule.forRoot(),
     MatFormFieldModule, MatInputModule, MatSelectModule, MatCardModule,
-    MatButtonModule, MatCheckboxModule, MatIconModule,
+    MatButtonModule, MatCheckboxModule, MatIconModule, TruncateModule
   ],
   declarations: [ConsumerComponent, ConsumerNavbarComponent, ConsumerLayoutComponent,
     ConsumerSearchListComponent, ConsumerDetailComponent, BookingComponent, ConsumerSearchItemComponent],
-  exports: [ConsumerComponent, ConsumerLayoutComponent]
+  exports: [ConsumerComponent, ConsumerLayoutComponent],
+  providers: [ConsumerService]
 })
 export class ConsumerModule { }

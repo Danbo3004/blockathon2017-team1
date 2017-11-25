@@ -4,7 +4,7 @@ module.exports = {
   app: {
     title: 'C2C Proof of Concept',
     description: 'Ride sharing decentralized app',
-    keywords: 'express, angular x js, node.js, postgrl, blockchain, etherum'
+    keywords: 'express, angular x js, node.js, postgrl, blockchain, ethereum'
   },
   port: 3000,
   logo: 'modules/core/client/img/brand/logo.png',

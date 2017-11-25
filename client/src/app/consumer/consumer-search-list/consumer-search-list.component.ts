@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ConsumerService } from '../../services/consumer.service';
+import { Home } from '../../models/home';
 
 @Component({
   selector: 'app-consumer-search-list',
@@ -7,13 +9,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./consumer-search-list.component.scss']
 })
 export class ConsumerSearchListComponent implements OnInit {
-  items: any [] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-  constructor(private router: Router) { }
+  homes: Home [] = [];
+  constructor(private router: Router, private consumerService: ConsumerService) { }
 
   ngOnInit() {
+    this.consumerService.homesAnnounce$.subscribe(homes => this.homes = homes);
   }
 
-  viewDetail() {
-    this.router.navigateByUrl('/consumer/home/' + 12);
+  viewDetail(addressContract: string) {
+    this.router.navigateByUrl('/consumer/home/' + addressContract);
   }
 }

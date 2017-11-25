@@ -1,4 +1,6 @@
-import { Component, OnInit, Output, Input, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter,
+   ViewChild, ElementRef } from '@angular/core';
+import { ConsumerService } from '../../../services/consumer.service';
 declare const $: any;
 
 @Component({
@@ -8,11 +10,13 @@ declare const $: any;
 })
 export class ConsumerNavbarComponent implements OnInit {
   @Input() showFilter: boolean = true;
+  @Input() key: string = '';
   @Output() showFilterChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() searchEmit: EventEmitter<string> = new EventEmitter<string>();
   @ViewChild('rangeend') checkOutRef: ElementRef;
   @ViewChild('rangestart') checkInRef: ElementRef;
 
-  constructor() { }
+  constructor(private consumerService: ConsumerService) { }
 
   ngOnInit() {
     this.loadFilter();
@@ -53,5 +57,9 @@ export class ConsumerNavbarComponent implements OnInit {
         console.log(date, text);
       }
     });
+  }
+
+  onSearch() {
+    this.searchEmit.emit(this.key);
   }
 }

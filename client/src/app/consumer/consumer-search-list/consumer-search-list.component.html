@@ -1,5 +1,5 @@
 <div class="consumer-search-list-container ui grid">
-    <div class="consumer-search-item three wide column" (click)="viewDetail()" *ngFor = "let item of items">
-        <app-consumer-search-item></app-consumer-search-item>
+    <div class="consumer-search-item three wide column" (click)="viewDetail(home.contractAddress)" *ngFor = "let home of homes">
+        <app-consumer-search-item [home]="home"></app-consumer-search-item>
     </div>
 </div>

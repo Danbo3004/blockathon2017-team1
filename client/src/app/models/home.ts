@@ -20,6 +20,29 @@ export class Home {
   feature: HomeFeature = new HomeFeature();
   price = 0;
   kind: HomeKind = HomeKind.PrivateRoom;
+  owner: string = '';
+
+  fromJson(json: any) {
+    if (!json) {
+      return this;
+    }
+
+    this.contractAddress = json.contractAddress;
+    this.name = json.name;
+    this.owner = json.owner;
+    this.description = json.description;
+    this.price = isNaN(json.price) ? 0 : +json.price;
+    this.address.streetAddress = json.streetAddress;
+    this.capacity.guest = json.guests;
+    this.capacity.bedroom = json.bedroom;
+    this.capacity.bed = json.bed;
+    this.capacity.bath = json.bathroom;
+    this.feature.internet = json.internet;
+    this.feature.kitchen = json.kitchen;
+    this.feature.iron = json.iron;
+    this.feature.hangers = json.hangers;
+    return this;
+  }
 }
 
 export class HomeCapacity {

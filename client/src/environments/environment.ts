@@ -947,5 +947,6 @@ export const environment = {
       "type": "event"
     }
   ],
-  homeContractEventAddress: '0x050048FB7BEfB27808E0F73CFb93c0069A766C47'
+  homeContractEventAddress: '0x050048FB7BEfB27808E0F73CFb93c0069A766C47',
+  APIRoute: "http://localhost:3000/api"
 };
