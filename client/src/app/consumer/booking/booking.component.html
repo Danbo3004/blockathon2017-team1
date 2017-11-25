@@ -6,4 +6,38 @@
       <star-rating-comp [starType]="'svg'" [rating]="2.63"></star-rating-comp>
     </span>
   </div>
+  <div class="end-section">
+    <div class="ui grid date">
+      <div class="eight wide column">
+        <div class="ui calendar" id="rangestart" #rangestart>
+          <div class="ui input left icon">
+            <i class="calendar icon"></i>
+            <input type="text" placeholder="Check in">
+          </div>
+        </div>
+      </div>
+      <div class="eight wide column">
+        <div class="ui calendar" id="rangeend" #rangeend>
+          <div class="ui input left icon">
+            <i class="calendar icon"></i>
+            <input type="text" placeholder="Check out">
+          </div>
+        </div>
+      </div>
+    </div>
+    <mat-form-field class="full-width">
+      <mat-select placeholder="Guests">
+        <mat-option [value]="1">
+          1 Guest
+        </mat-option>
+        <mat-option [value]="2">
+          2 Guests
+        </mat-option>
+        <mat-option [value]="3">
+          3 Guests
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button type="submit" class="full-width" mat-raised-button color="warn">Booking</button>
+  </div>
 </div>

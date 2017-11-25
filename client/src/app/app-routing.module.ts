@@ -16,7 +16,7 @@ export const routes: Routes = [
       { path: 'home/:homeId', component: ConsumerDetailComponent }
     ]
   },
-  { path: 'app', loadChildren: 'app/main/main.module#MainModule'},
+  { path: 'app', loadChildren: 'app/main/main.module#MainModule', canActivate: [ AuthenticationGuard ] },
   { path: 'login', component: LoginComponent },
 ];
 

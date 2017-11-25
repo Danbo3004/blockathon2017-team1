@@ -18,7 +18,7 @@ export class EditHomeComponent implements OnInit {
   public steps: any [] = [];
   public home: Home = new Home();
   private selectedStep: StepList = StepList.Place;
-  
+
   constructor(
     private route: ActivatedRoute,
     private homeService: HomeService,
@@ -34,14 +34,13 @@ export class EditHomeComponent implements OnInit {
 
   onSubmitClicked() {
     if (this.contractAddress) {
-      this.homeService.updateHome(this.home);
+      this.homeService.updateInfo(this.home);
     } else {
       this.homeService.newHome(this.home);
     }
-  }  
+  }
 
   onNextStep(i: StepList) {
     this.selectedStep = i;
-    console.log(this.home);
   }
 }

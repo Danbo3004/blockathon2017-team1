@@ -1,7 +1,7 @@
 [
     {
-        "title": "Kind of place",
-        "description": "Set up kind of your place"
+        "title": "Overview",
+        "description": "Describe your host place"
     },
     {
         "title": "Location",
@@ -12,8 +12,8 @@
         "description": "Choose place services"
     },
     {
-        "title": "Price",
-        "description": "Set up price"
+        "title": "Place infomation",
+        "description": "Fill your place detail"
     },
     {
         "title": "Senses",
