@@ -1,0 +1,8 @@
+<div class="ui ordered steps">
+  <div class="active step percent-25-width" *ngFor="let step of steps; let i = index" (click)="onSelected(i)" [class.selected]="i === selectedIndex">
+    <div class="content">
+      <div class="title">{{step.title}}</div>
+      <div class="description">{{step.description}}</div>
+    </div>
+  </div>
+</div>

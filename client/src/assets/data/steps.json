@@ -1,0 +1,22 @@
+[
+    {
+        "title": "Kind of place",
+        "description": "Set up kind of your place"
+    },
+    {
+        "title": "Location",
+        "description": "Enter place address"
+    },
+    {
+        "title": "Features",
+        "description": "Choose place services"
+    },
+    {
+        "title": "Price",
+        "description": "Set up price"
+    },
+    {
+        "title": "Senses",
+        "description": "Introduce your beautiful place"
+    }
+]

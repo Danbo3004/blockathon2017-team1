@@ -1,0 +1,15 @@
+.percent-25-width {
+    width: 26%;
+}
+
+.active.step:hover {
+    cursor: pointer;
+}
+
+.active.step {
+    user-select: none;
+}
+
+.ui.steps .step.active.selected, .ui.steps .step.active.selected:after {
+    background-color: white;
+}

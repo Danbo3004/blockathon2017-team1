@@ -38,17 +38,17 @@ export class ConsumerNavbarComponent implements OnInit {
   }
 
   loadDateTime() {
-    $('#rangestart').calendar({
+    $(this.checkInRef.nativeElement).calendar({
       type: 'date',
-      endCalendar: $('#rangeend'),
+      endCalendar: $(this.checkOutRef.nativeElement),
       onChange: (date, text) => {
         console.log(date, text);
       }
     });
     
-    $('#rangeend').calendar({
+    $(this.checkOutRef.nativeElement).calendar({
       type: 'date',
-      startCalendar: $('#rangestart'),
+      startCalendar: $(this.checkInRef.nativeElement),
       onChange: (date, text) => {
         console.log(date, text);
       }

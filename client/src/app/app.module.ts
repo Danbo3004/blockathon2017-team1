@@ -8,18 +8,18 @@ import { WelcomeModule } from './welcome/welcome.module';
 import { SharedModule } from './shared/shared.module';
 import { MainModule } from './main/main.module';
 import { ConsumerModule } from './consumer/consumer.module';
-import { ConsumerSearchItemComponent } from './consumer-search-item/consumer-search-item.component';
 import { AuthenticationService } from './services/authentication.service';
 import { AuthenticationGuard } from './guards/authentication.guard';
 import { WalletService } from './services/wallet.service';
 import { HomeService } from './services/home.service';
 import { InternalHomeService } from './services/internal-home.service';
 import { Web3Service } from './services/web3.service';
+import { DataService } from './services/data.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ConsumerSearchItemComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -28,14 +28,15 @@ import { Web3Service } from './services/web3.service';
     AppRoutingModule,
     SharedModule,
     MainModule,
-    ConsumerModule
+    ConsumerModule,
+    BrowserAnimationsModule
   ],
   providers: [
     AuthenticationService,
     AuthenticationGuard,
     WalletService,
     { provide: HomeService, useClass: InternalHomeService },
-    Web3Service
+    Web3Service, DataService
   ],
   bootstrap: [AppComponent],
 })

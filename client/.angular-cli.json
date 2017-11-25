@@ -26,7 +26,8 @@
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",
         "../node_modules/semantic-ui-css/semantic.min.js",
-        "../node_modules/semantic-ui-calendar/dist/calendar.min.js"
+        "../node_modules/semantic-ui-calendar/dist/calendar.min.js",
+        "assets/web3.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

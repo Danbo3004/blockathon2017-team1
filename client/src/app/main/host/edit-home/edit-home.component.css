@@ -1,0 +1,28 @@
+.setup-home-container {
+    height: 100%;
+}
+
+.fill-information-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.place-information form button, .location-information form button {
+    margin-top: 50px;
+}
+
+.place-information {
+    height: 50%;
+    width: 30%;
+    margin-top: -10rem;
+    text-align: center;
+}
+
+.location-information {
+    height: 50%;
+    width: 50%;
+    margin-top: -10rem;
+    text-align: center;
+}
