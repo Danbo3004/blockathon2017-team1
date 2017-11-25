@@ -4,8 +4,7 @@ import { Home } from '../models/home';
 import { web3 } from './web3.service';
 import { environment } from '../../environments/environment';
 import { AuthenticationService } from './authentication.service';
-
-const Tx: any = (<any>window).ethereumjs.Tx;
+import Tx from 'ethereumjs-tx';
 export const HomeContract = new web3.eth.contract(environment.homeContractAbi);
 
 @Injectable()

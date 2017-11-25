@@ -12,6 +12,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { NgUploaderComponent } from './common/ng-uploader/ng-uploader.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -19,10 +22,11 @@ import { MatButtonModule } from '@angular/material/button';
     HostRoutingModule,
     SharedModule, MatSelectModule,
     MatFormFieldModule, MatInputModule,
-    MatButtonModule
+    MatButtonModule, MatCheckboxModule,
+    FormsModule
   ],
   declarations: [HomeListComponent, DashboardComponent, SetupHomeStepsComponent,
-    HostLayoutComponent, EditHomeComponent, ViewHomeComponent],
+    HostLayoutComponent, EditHomeComponent, ViewHomeComponent, NgUploaderComponent],
   providers: []
 })
 export class HostModule { }

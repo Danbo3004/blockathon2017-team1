@@ -2,8 +2,15 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 body {
-    font-family: montserrat;
     overflow: hidden
+}
+
+h1, h2, h3, h4, h5, span, strong, div, a, button {
+    font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif !important;
+}
+
+span, strong, div, a, button {
+    font-size: 15px;
 }
 
 .full-width {

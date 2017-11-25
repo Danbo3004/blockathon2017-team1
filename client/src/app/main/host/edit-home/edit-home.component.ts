@@ -16,6 +16,7 @@ export class EditHomeComponent implements OnInit {
   public name: string;
   public description: string;
   public steps: any [] = [];
+  public home: Home = new Home();
   private selectedStep: StepList = StepList.Place;
   
   constructor(
@@ -32,12 +33,15 @@ export class EditHomeComponent implements OnInit {
   }
 
   onSubmitClicked() {
-    const home = new Home();
-
     if (this.contractAddress) {
-      this.homeService.updateHome(home);
+      this.homeService.updateHome(this.home);
     } else {
-      this.homeService.newHome(home);
+      this.homeService.newHome(this.home);
     }
   }  
+
+  onNextStep(i: StepList) {
+    this.selectedStep = i;
+    console.log(this.home);
+  }
 }

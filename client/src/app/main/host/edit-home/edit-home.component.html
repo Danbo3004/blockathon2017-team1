@@ -2,48 +2,48 @@
   <app-setup-home-steps [steps]="steps" [(selectedIndex)]="selectedStep"></app-setup-home-steps>
   <div class="fill-information-container">
     <div class="place-information" *ngIf="selectedStep === 0">
-      <form action="">
+      <form (submit)="onNextStep(1)">
         <h2>What kind of place are you listing?</h2>
         <mat-form-field class="full-width">
-          <mat-select placeholder="What will guests have?">
-            <mat-option value="1">
+          <mat-select placeholder="What will guests have?" [(value)]="home.kind">
+            <mat-option [value]="1">
               Private room
             </mat-option>
-            <mat-option value="2">
+            <mat-option [value]="2">
               Shared room
             </mat-option>
           </mat-select>
         </mat-form-field>
         <br>
         <mat-form-field class="full-width">
-          <input type="number" matInput placeholder="How many number of guests">
+          <input type="number" matInput placeholder="How many number of guests" [(ngModel)]="home.capacity.guest" [ngModelOptions]="{standalone: true}">
         </mat-form-field>
-        <button class="right" mat-raised-button color="warn">Next</button>
+        <button type="submit" class="right" mat-raised-button color="warn">Next</button>
       </form>
     </div>
     <div class="location-information" *ngIf="selectedStep === 1">
-      <form action="">
+      <form (submit)="onNextStep(2)">
         <h2>Where your place location?</h2>
         <div class="ui grid">
           <div class="ten wide column">
             <mat-form-field class="full-width">
-              <input type="number" matInput placeholder="Street address">
+              <input type="text" matInput placeholder="Street address" [(ngModel)]="home.address.streetAddress" [ngModelOptions]="{standalone: true}">
             </mat-form-field>
           </div>
           <div class="six wide column">
             <mat-form-field class="full-width">
-              <input type="number" matInput placeholder="Apt #">
+              <input type="number" matInput placeholder="Apt #" [(ngModel)]="home.address.apt" [ngModelOptions]="{standalone: true}">
             </mat-form-field>
           </div>
         </div>
         <div class="ui grid">
           <div class="eight wide column">
             <mat-form-field class="full-width">
-              <mat-select placeholder="State">
-                <mat-option value="1">
+              <mat-select placeholder="State" [(value)]="home.address.state">
+                <mat-option [value]="1">
                   Private room
                 </mat-option>
-                <mat-option value="2">
+                <mat-option [value]="2">
                   Shared room
                 </mat-option>
               </mat-select>
@@ -51,11 +51,11 @@
           </div>
           <div class="eight wide column">
             <mat-form-field class="full-width">
-              <mat-select placeholder="Country">
-                <mat-option value="1">
+              <mat-select placeholder="Country" [(value)]="home.address.country">
+                <mat-option [value]="1">
                   Private room
                 </mat-option>
-                <mat-option value="2">
+                <mat-option [value]="2">
                   Shared room
                 </mat-option>
               </mat-select>
@@ -66,8 +66,44 @@
         <button class="right" mat-raised-button color="warn">Next</button>
       </form>
     </div>
-    <div class="features-information" *ngIf="selectedStep === 2"></div>
-    <div class="price-information" *ngIf="selectedStep === 3"></div>
-    <div class="senses-information" *ngIf="selectedStep === 4"></div>
+    <div class="features-information" *ngIf="selectedStep === 2">
+      <form (submit)="onNextStep(3)">
+        <h2>What amenities do you offer?</h2>
+        <div class="feature-list">
+          <div class="ui grid">
+            <mat-checkbox [(ngModel)]="home.feature.internet" [ngModelOptions]="{standalone: true}">Internet</mat-checkbox>
+          </div>
+          <div class="ui grid">
+            <mat-checkbox [(ngModel)]="home.feature.kitchen" [ngModelOptions]="{standalone: true}">Kitchen</mat-checkbox>
+          </div>
+          <div class="ui grid">
+            <mat-checkbox [(ngModel)]="home.feature.iron" [ngModelOptions]="{standalone: true}">Iron</mat-checkbox>
+          </div>
+          <div class="ui grid">
+            <mat-checkbox [(ngModel)]="home.feature.hanger" [ngModelOptions]="{standalone: true}">Hangers</mat-checkbox>
+          </div>
+        </div>
+        <br>
+        <button class="right" mat-raised-button color="warn">Next</button>
+      </form>
+    </div>
+    <div class="price-information" *ngIf="selectedStep === 3">
+      <form (submit)="onNextStep(4)">
+        <h2>How much for one night?</h2>
+        <mat-form-field class="full-width" *ngIf="home.kind === 1">
+          <input type="number" [(ngModel)]="home.price" [ngModelOptions]="{standalone: true}" matInput placeholder="Private room (cost for one room)">
+        </mat-form-field>
+        <mat-form-field class="full-width" *ngIf="home.kind === 2">
+          <input type="number" [(ngModel)]="home.price" [ngModelOptions]="{standalone: true}" matInput placeholder="Shared room (cost for one person)">
+        </mat-form-field>
+        <br>
+        <button class="right" mat-raised-button color="warn">Next</button>
+      </form>
+    </div>
+    <div class="senses-information" *ngIf="selectedStep === 4">
+      <h2>Show travelers what your space looks like</h2>
+      <app-ng-uploader></app-ng-uploader>
+      <button class="right submit" (click)="onSubmitClick()" mat-raised-button color="warn">Host your place</button>
+    </div>
   </div>
 </div>
