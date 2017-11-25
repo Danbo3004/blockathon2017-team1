@@ -10,10 +10,17 @@ import { MatIconModule } from '@angular/material/icon';
 import { SharedModule } from '../shared/shared.module';
 import { BookingComponent } from './booking/booking.component';
 import { StarRatingModule } from 'angular-star-rating';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   imports: [
-    CommonModule, RouterModule, MatIconModule, SharedModule, StarRatingModule.forRoot()
+    CommonModule, RouterModule, MatIconModule, SharedModule, StarRatingModule.forRoot(),
+    MatFormFieldModule, MatInputModule, MatSelectModule,
+    MatButtonModule, MatCheckboxModule, MatIconModule,
   ],
   declarations: [ConsumerComponent, ConsumerNavbarComponent, ConsumerLayoutComponent,
     ConsumerSearchListComponent, ConsumerDetailComponent, BookingComponent],
