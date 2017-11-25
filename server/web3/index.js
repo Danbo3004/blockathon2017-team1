@@ -98,6 +98,13 @@ homeContractEventInstance.allEvents(function (error, log) {
         }
       });
       break;
+    case 'Book':
+      return models.HomeBooking.create({
+        contractAddress: log.args.caller,
+        startDate: log.args._startDate,
+        duration: log.args._duration
+      });
+      break;
     default:
   }
 });

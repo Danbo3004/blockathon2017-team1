@@ -18,8 +18,11 @@ homeContractEventInstance.allEvents(function (error, log) {
 
 @Injectable()
 export abstract class HomeService {
+  private estimatedGas = '';
 
-  constructor(protected authenticationService: AuthenticationService) { }
+  constructor(protected authenticationService: AuthenticationService) {
+    this.estimatedGas = web3.toHex(web3.eth.estimateGas({ data: environment.homeContractCode }));
+  }
 
   public abstract getHomes(host: string): Observable<Home[]>;
 
@@ -28,109 +31,34 @@ export abstract class HomeService {
   public abstract cacheHome(home: Home): Observable<Home>;
 
   public newHome(home: Home): Observable<Home> {
-    return Observable.fromPromise(new Promise<Home>((resolve, reject) => {
-      const nonce = web3.toHex(web3.eth.getTransactionCount('0x' + this.authenticationService.wallet.getAddress().toString('hex')));
-      const from = '0x' + this.authenticationService.wallet.getAddress().toString('hex');
-      const gas = web3.toHex(web3.eth.estimateGas({ data: environment.homeContractCode }));
-      const gasPrice = web3.toHex(environment.defaultGasPrice);
-      const data = HomeContract.new.getData(environment.judgeAddress, home.name, home.description, home.address.streetAddress, home.price, {
-        data: environment.homeContractCode
-      });
+    const data = HomeContract.new.getData(environment.judgeAddress, home.name, home.description, home.address.streetAddress, home.price, {
+      data: environment.homeContractCode
+    });
 
-      const txParams = { nonce: nonce, from: from, gas: gas, gasPrice: gasPrice, data: data };
-      const tx = new Tx(txParams);
-      this.authenticationService.signTransaction(tx);
-      web3.eth.sendRawTransaction('0x' + tx.serialize().toString('hex'), (error, hash) => {
-        if (error) {
-          reject(error);
-        } else {
-          resolve(home);
-        }
-      });
-    })).flatMap(newHome => this.cacheHome(newHome));
+    return this.authenticationService.sendTransaction(data, this.estimatedGas).map(_ => home);
   }
 
   public updateInfo(home: Home): Observable<Home> {
-    return Observable.fromPromise(new Promise<Home>((resolve, reject) => {
-      const nonce = web3.toHex(web3.eth.getTransactionCount('0x' + this.authenticationService.wallet.getAddress().toString('hex')));
-      const from = '0x' + this.authenticationService.wallet.getAddress().toString('hex');
-      const gas = web3.toHex(web3.eth.estimateGas({ data: environment.homeContractCode }));
-      const gasPrice = web3.toHex(environment.defaultGasPrice);
-      const data = HomeContract.at(home.contractAddress).updateInfo.getData(home.name, home.description, home.address.streetAddress, home.price);
-
-      const txParams = { nonce: nonce, from: from, gas: gas, gasPrice: gasPrice, data: data };
-      const tx = new Tx(txParams);
-      this.authenticationService.signTransaction(tx);
-      web3.eth.sendRawTransaction(tx.serialize().toString('hex'), (error, hash) => {
-        if (error) {
-          reject(error);
-        } else {
-          resolve(home);
-        }
-      });
-    })).flatMap(updatedHome => this.cacheHome(updatedHome));
+    const data = HomeContract.at(home.contractAddress).updateInfo.getData(home.name, home.description,
+      home.address.streetAddress, home.price);
+    return this.authenticationService.sendTransaction(data, this.estimatedGas).map(_ => home);
   }
 
   public updateCapacity(home: Home): Observable<Home> {
-    return Observable.fromPromise(new Promise<Home>((resolve, reject) => {
-      const nonce = web3.toHex(web3.eth.getTransactionCount('0x' + this.authenticationService.wallet.getAddress().toString('hex')));
-      const from = '0x' + this.authenticationService.wallet.getAddress().toString('hex');
-      const gas = web3.toHex(web3.eth.estimateGas({ data: environment.homeContractCode }));
-      const gasPrice = web3.toHex(environment.defaultGasPrice);
-      const data = HomeContract.at(home.contractAddress).updateInfo.getData(home.capacity.guest, home.capacity.bed, home.capacity.bedroom, home.capacity.bath);
-
-      const txParams = { nonce: nonce, from: from, gas: gas, gasPrice: gasPrice, data: data };
-      const tx = new Tx(txParams);
-      this.authenticationService.signTransaction(tx);
-      web3.eth.sendRawTransaction(tx.serialize().toString('hex'), (error, hash) => {
-        if (error) {
-          reject(error);
-        } else {
-          resolve(home);
-        }
-      });
-    })).flatMap(updatedHome => this.cacheHome(updatedHome));
+    const data = HomeContract.at(home.contractAddress).updateInfo.getData(home.capacity.guest,
+      home.capacity.bed, home.capacity.bedroom, home.capacity.bath);
+    return this.authenticationService.sendTransaction(data, this.estimatedGas).map(_ => home);
   }
 
   public updateFeature(home: Home): Observable<Home> {
-    return Observable.fromPromise(new Promise<Home>((resolve, reject) => {
-      const nonce = web3.toHex(web3.eth.getTransactionCount('0x' + this.authenticationService.wallet.getAddress().toString('hex')));
-      const from = '0x' + this.authenticationService.wallet.getAddress().toString('hex');
-      const gas = web3.toHex(web3.eth.estimateGas({ data: environment.homeContractCode }));
-      const gasPrice = web3.toHex(environment.defaultGasPrice);
-      const data = HomeContract.at(home.contractAddress).updateInfo.getData(home.feature.internet, home.feature.kitchen, home.feature.iron, home.feature.hangers);
-
-      const txParams = { nonce: nonce, from: from, gas: gas, gasPrice: gasPrice, data: data };
-      const tx = new Tx(txParams);
-      this.authenticationService.signTransaction(tx);
-      web3.eth.sendRawTransaction(tx.serialize().toString('hex'), (error, hash) => {
-        if (error) {
-          reject(error);
-        } else {
-          resolve(home);
-        }
-      });
-    })).flatMap(updatedHome => this.cacheHome(updatedHome));
+    const data = HomeContract.at(home.contractAddress).updateInfo.getData(home.feature.internet,
+      home.feature.kitchen, home.feature.iron, home.feature.hangers);
+    return this.authenticationService.sendTransaction(data, this.estimatedGas).map(_ => home);
   }
 
-  public bookHome(home: Home): Observable<any> {
-    return Observable.fromPromise(new Promise<Home>((resolve, reject) => {
-      const nonce = web3.toHex(web3.eth.getTransactionCount('0x' + this.authenticationService.wallet.getAddress().toString('hex')));
-      const from = '0x' + this.authenticationService.wallet.getAddress().toString('hex');
-      const gas = web3.toHex(web3.eth.estimateGas({ data: environment.homeContractCode }));
-      const gasPrice = web3.toHex(environment.defaultGasPrice);
-      const data = HomeContract.at(home.contractAddress).book.getData(home);
-
-      const txParams = { nonce: nonce, from: from, gas: gas, gasPrice: gasPrice, data: data };
-      const tx = new Tx(txParams);
-      this.authenticationService.signTransaction(tx);
-      web3.eth.sendRawTransaction(tx.serialize().toString('hex'), (error, hash) => {
-        if (error) {
-          reject(error);
-        } else {
-          resolve(home);
-        }
-      });
-    })).flatMap(updatedHome => this.cacheHome(updatedHome));
+  public bookHome(home: Home, startDate: number, duration: number): Observable<Home> {
+    const value = '0x' + web3.toHex(web3.toWei(home.price * duration, 'ether'));
+    const data = HomeContract.at(home.contractAddress).book.getData(startDate, duration);
+    return this.authenticationService.sendTransaction(data, this.estimatedGas, value).map(_ => home);
   }
 }
