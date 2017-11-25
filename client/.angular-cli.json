@@ -21,7 +21,7 @@
       "styles": [
         "../node_modules/semantic-ui-css/semantic.min.css",
         "../node_modules/semantic-ui-calendar/dist/calendar.min.css",
-        "styles.css"
+        "styles.scss"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",
@@ -60,7 +60,8 @@
     }
   },
   "defaults": {
-    "styleExt": "css",
-    "component": {}
+    "styleExt": "scss",
+    "component": {
+    }
   }
 }

@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./consumer-layout.component.css']
 })
 export class ConsumerLayoutComponent implements OnInit {
-  showFilter: boolean = true;
+  showFilter: boolean = false;
   constructor() { }
 
   ngOnInit() {

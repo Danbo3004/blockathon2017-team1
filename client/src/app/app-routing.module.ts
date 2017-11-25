@@ -5,13 +5,15 @@ import { AuthenticationGuard } from './guards/authentication.guard';
 import { ConsumerComponent } from './consumer/consumer.component';
 import { ConsumerLayoutComponent } from './consumer/consumer-layout/consumer-layout.component';
 import { ConsumerSearchListComponent } from './consumer/consumer-search-list/consumer-search-list.component';
+import { ConsumerDetailComponent } from './consumer/consumer-detail/consumer-detail.component';
 
 export const routes: Routes = [
   { path: '', component: ConsumerComponent },
   {
     path: 'consumer', component: ConsumerLayoutComponent,
     children: [
-      { path: 's', component: ConsumerSearchListComponent }
+      { path: 's', component: ConsumerSearchListComponent },
+      { path: 'home/:homeId', component: ConsumerDetailComponent }
     ]
   },
   { path: 'app', loadChildren: 'app/main/main.module#MainModule'},

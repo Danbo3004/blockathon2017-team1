@@ -1,0 +1,93 @@
+.page-layout.carded {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto;
+    width: 100%;
+    min-width: 100%;
+    height: 100%
+}
+
+.ps {
+    position: relative;
+}
+
+.ps {
+    overflow: hidden!important;
+    overflow-anchor: none;
+    -ms-overflow-style: none;
+    touch-action: auto;
+    -ms-touch-action: auto;
+}
+
+.image-container {
+    background-image: url("https://a0.muscache.com/im/pictures/881d76c6-4de6-4808-9f0b-36462b6c48a2.jpg?aki_policy=large");
+    background-size: contain;
+    width: 100%;
+    height: 200px;
+}
+
+.info-container {
+    width: 100%;
+    height: 100%;
+    margin: 0 150px;
+    padding-top: 10px;
+}
+
+.info-container .menu-list ul {
+    display: inline-flex;
+    list-style: none;
+    justify-content: space-around;
+    width: 40%;
+    padding-left: 0;
+}
+
+.info-container .menu-list {
+    border-bottom: 1px solid #ddd;
+}
+
+.info-container .menu-list ul li a{
+    text-decoration: none;
+    font-weight: 700;
+    color: #ddd;
+}
+
+.info-container .menu-list ul li.selected a{
+    color: black;
+}
+
+.overview-container .header {
+    margin-top: 10px;
+}
+
+.overview-container .summarize ul {
+    list-style: none;
+    padding: 0;
+    display: inline-flex;
+    justify-content: space-between;
+    width: 50%;
+}
+
+.overview-container .description {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.overview-container .features .header {
+    margin-bottom: 15px;
+}
+
+.overview-container .features .header h4 {
+    font-weight: 700;
+}
+
+.overview-container .features .feature {
+    margin-bottom: 10px;
+}

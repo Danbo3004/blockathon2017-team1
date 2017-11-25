@@ -1,0 +1,13 @@
+.booking-container {
+    padding: 15px;
+    width: 60%;
+    .top-section {
+        .rate {
+            display: flex;
+            margin-left: -5px;
+            margin-top: 5px;
+        }
+
+        border-bottom: 1px solid #ddd;
+    }
+}
