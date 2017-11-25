@@ -1,27 +1,48 @@
 pragma solidity ^0.4.17;
 
 contract Venue {
-  struct BookData {
+  struct HomeCapacity {
+    uint guest;
+    uint bedroom;
+    uint bed;
+    uint bath;
+  }
+  struct HomeFeature {
+    bool internet;
+    bool kitchen;
+    bool iron;
+    bool hangers;
+  }
+  struct PrimaryData {
     string name; 
-    uint capacity;
+    string description; 
+    string street; 
     uint price; // Ether unit by wei
     bool isValid;
     uint checkinAt;
     uint checkoutAt;
+    uint bookedAt;
   }
+
   struct Review {
+    uint createdTime;
     address owner;
     uint rate;
     string message;
   }
+
   address public owner;
   address public consumer;
-  BookData public detail;
+  PrimaryData public detail;
+  HomeCapacity public capacity;
+  HomeFeature public feature;
 
-  mapping (address => BookData) public bookdataHistory;
+  mapping (address => PrimaryData) public bookdataHistory;
+
   mapping (uint => address) public bookSchedule;
   mapping (uint => address) public checkinSchedule;
   mapping (uint => address) public checkoutSchedule;
+
   Review[] public reviewHistory;
 
   modifier onlyOwner() {
@@ -42,28 +63,70 @@ contract Venue {
     } 
   }
 
-  function Venue(string _name, uint _price, uint _capacity) public {
+  function Venue(
+      string _name,
+      string _description,
+      string _street,
+      uint _price
+    ) public
+  {
     owner = msg.sender;
     detail.isValid = true;
     detail.name = _name;
+    detail.description = _description;
+    detail.street = _street;
     detail.price = _price;
-    detail.capacity = _capacity;
   }
 
-  function update(string _name, uint _price, uint _capacity) public {
-    delete(detail);
+  function updateCapacity(
+    uint _guest,
+    uint _bedroom,
+    uint _bed,
+    uint _bath
+    ) public onlyOwner
+  {
+    capacity.guest = _guest;
+    capacity.bedroom = _bedroom;
+    capacity.bed = _bed;
+    capacity.bath = _bath;
+  }
+
+  function updateFeature (
+    bool _internet,
+    bool _kitchen,
+    bool _iron,
+    bool _hangers
+    ) public onlyOwner 
+  {
+    feature.internet = _internet;
+    feature.kitchen = _kitchen;
+    feature.iron = _iron;
+    feature.hangers = _hangers;
+  }
+
+  function update (
+      string _name,
+      string _description,
+      string _street,
+      uint _price
+    ) public onlyOwner
+  {
+    detail.isValid = true;
     detail.name = _name;
+    detail.description = _description;
+    detail.street = _street;
     detail.price = _price;
-    detail.capacity = _capacity;
   }
 
   function cancel(uint refundRate) public {
     uint refundAmount = bookdataHistory[msg.sender].price * refundRate / 100;
     msg.sender.transfer(refundAmount);
+    delete(bookdataHistory[msg.sender]);
   }
 
-  function book(uint startDate, uint duration) public payable {
+  function book(uint bookedAt, uint startDate, uint duration) public payable {
     // Capture venue detail
+    detail.bookedAt = bookedAt;
     bookdataHistory[msg.sender] = detail;
     // Mark on book map
     for ( uint i = 0; i < duration; i++ ) {
@@ -85,7 +148,7 @@ contract Venue {
     bookdataHistory[msg.sender].checkoutAt = date;
   }
 
-  function postReview(uint _rate, string _message) public onlyInConsumer {
-    reviewHistory.push(Review({owner: msg.sender, rate: _rate, message: _message}));
+  function postReview(uint _rate, string _message, uint _createdTime) public onlyInConsumer {
+    reviewHistory.push(Review({owner: msg.sender, rate: _rate, message: _message, createdTime: _createdTime}));
   }
 }
