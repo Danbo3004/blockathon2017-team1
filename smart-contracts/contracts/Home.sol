@@ -1,6 +1,6 @@
 pragma solidity ^0.4.17;
 
-contract Venue {
+contract Home {
   struct HomeCapacity {
     uint guest;
     uint bedroom;
@@ -16,7 +16,8 @@ contract Venue {
   struct PrimaryData {
     string name; 
     string description; 
-    string street; 
+    string street;
+    uint income;
     uint price; // Ether unit by wei
     bool isValid;
     uint checkinAt;
@@ -30,9 +31,10 @@ contract Venue {
     uint rate;
     string message;
   }
-
   address public owner;
   address public consumer;
+  address public judge;
+  uint public availableAmount;
   PrimaryData public detail;
   HomeCapacity public capacity;
   HomeFeature public feature;
@@ -43,7 +45,15 @@ contract Venue {
   mapping (uint => address) public checkinSchedule;
   mapping (uint => address) public checkoutSchedule;
 
+  mapping (address => uint) public resolveHistory; 
+
   Review[] public reviewHistory;
+
+  modifier onlyJudge() {
+    if (msg.sender == judge) {
+      _;
+    }
+  }
 
   modifier onlyOwner() {
     if (msg.sender == owner) {
@@ -63,13 +73,15 @@ contract Venue {
     } 
   }
 
-  function Venue(
+  function Home(
+      address _judge,
       string _name,
       string _description,
       string _street,
       uint _price
     ) public
   {
+    judge = _judge;
     owner = msg.sender;
     detail.isValid = true;
     detail.name = _name;
@@ -125,12 +137,15 @@ contract Venue {
   }
 
   function book(uint bookedAt, uint startDate, uint duration) public payable {
-    // Capture venue detail
-    detail.bookedAt = bookedAt;
-    bookdataHistory[msg.sender] = detail;
-    // Mark on book map
-    for ( uint i = 0; i < duration; i++ ) {
-      bookSchedule[startDate + i] = msg.sender;
+    if (msg.value >= detail.price) {
+      // Capture book data detail
+      detail.bookedAt = bookedAt;
+      bookdataHistory[msg.sender] = detail;
+      bookdataHistory[msg.sender].income = msg.value;
+      // Mark on book map
+      for ( uint i = 0; i < duration; i++ ) {
+        bookSchedule[startDate + i] = msg.sender;
+      }
     }
   }
 
@@ -146,9 +161,22 @@ contract Venue {
     delete(consumer);
     checkoutSchedule[date] = msg.sender;
     bookdataHistory[msg.sender].checkoutAt = date;
+    availableAmount += bookdataHistory[msg.sender].income;
   }
 
   function postReview(uint _rate, string _message, uint _createdTime) public onlyInConsumer {
     reviewHistory.push(Review({owner: msg.sender, rate: _rate, message: _message, createdTime: _createdTime}));
+  }
+
+  function resolveConflict (address _consumer, uint _consumerRate) public onlyJudge payable {
+    uint amount = bookdataHistory[_consumer].income * (_consumerRate / 100);
+    _consumer.transfer(amount);
+    resolveHistory[_consumer] = amount;
+    availableAmount -= amount;
+  }
+
+  function withDrawal() public onlyOwner payable {
+    owner.transfer(availableAmount);
+    availableAmount = 0;
   }
 }

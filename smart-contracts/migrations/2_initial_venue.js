@@ -1,5 +1,5 @@
-var Venue = artifacts.require("./Venue.sol");
+var Home = artifacts.require("./Home.sol");
 
 module.exports = function(deployer) {
-  deployer.deploy(Venue);
+  deployer.deploy(Home);
 };
