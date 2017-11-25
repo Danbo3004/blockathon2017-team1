@@ -70,6 +70,8 @@ export class BookingComponent implements OnInit, OnChanges {
   }
 
   onBooking() {
-
+    this.homeService.bookHome(this.home, this.checkInTime, this.checkOutTime - this.checkInTime).subscribe(data => {
+      console.log(data);
+    })
   }
 }
