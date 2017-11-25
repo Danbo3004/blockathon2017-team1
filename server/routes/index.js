@@ -2,12 +2,26 @@
 var express = require('express');
 var constant = require('../const/siteconst');
 var router = express.Router();
+var models  = require('../models');
+
+const Op = models.Sequelize.Op;
 
 module.exports = function () {
 
-  var ctrlFaceRecognize = require('../controllers/recognize');
+  router.get('/homes', function(req, res) {
+    models.Home.findAll({
+      where: {
+        [Op.or]: [
+          { name: { [Op.like]: '%' + req.query.keyword + '%' } },
+          { description: { [Op.like]: '%' + req.query.keyword + '%' } },
+          { streetAddress: { [Op.like]: '%' + req.query.keyword + '%' } }
+        ]
+      }
+    }).then(function(homes) {
+      res.send(homes)
+    });
+  });
 
-  router.post('/enroll', ctrlFaceRecognize.enroll);
   module.exports = router;
   return router;
 };

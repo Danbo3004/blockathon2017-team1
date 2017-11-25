@@ -11,7 +11,6 @@ const HomeContractEvent = web3.eth.contract(environment.homeContractEventAbi);
 
 const homeContractEventInstance = HomeContractEvent.at(environment.homeContractEventAddress);
 homeContractEventInstance.allEvents(function (error, log) {
-  debugger;
   if (!error) {
     console.log(log);
   }

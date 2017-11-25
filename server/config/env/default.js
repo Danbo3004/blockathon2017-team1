@@ -92,6 +92,36 @@ module.exports = {
       "constant": false,
       "inputs": [
         {
+          "name": "_owner",
+          "type": "address"
+        },
+        {
+          "name": "_name",
+          "type": "string"
+        },
+        {
+          "name": "_description",
+          "type": "string"
+        },
+        {
+          "name": "_streetAddress",
+          "type": "string"
+        },
+        {
+          "name": "_price",
+          "type": "uint256"
+        }
+      ],
+      "name": "newHome",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
           "name": "_bookDataHash",
           "type": "bytes32"
         },
@@ -119,14 +149,36 @@ module.exports = {
         }
       ],
       "name": "requireResolve",
-      "outputs": [],
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
       "payable": false,
       "stateMutability": "nonpayable",
       "type": "function"
     },
     {
       "constant": true,
-      "inputs": [],
+      "inputs": [
+        {
+          "name": "_name",
+          "type": "string"
+        },
+        {
+          "name": "_description",
+          "type": "string"
+        },
+        {
+          "name": "_streetAddress",
+          "type": "string"
+        },
+        {
+          "name": "_price",
+          "type": "uint256"
+        }
+      ],
       "name": "owner",
       "outputs": [
         {
@@ -174,6 +226,14 @@ module.exports = {
         {
           "name": "_checkinAt",
           "type": "uint256"
+        },
+        {
+          "name": "_iron",
+          "type": "bool"
+        },
+        {
+          "name": "_hangers",
+          "type": "bool"
         }
       ],
       "name": "checkin",
@@ -183,7 +243,6 @@ module.exports = {
       "type": "function"
     },
     {
-      "constant": false,
       "inputs": [
         {
           "name": "_internet",
@@ -202,17 +261,83 @@ module.exports = {
           "type": "bool"
         }
       ],
-      "name": "updateFeature",
-      "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      "constant": false,
+      "name": "updateFeature",
+      "outputs": []
     },
     {
-      "inputs": [],
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "caller",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "_name",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "name": "_description",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "name": "_streetAddress",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "name": "_price",
+          "type": "uint256"
+        }
+      ],
+      "name": "UpdateInfo",
+      "type": "constructor",
       "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "constructor"
+      "stateMutability": "nonpayable"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "_contractAddress",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "_owner",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "_name",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "name": "_description",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "name": "_streetAddress",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "name": "_price",
+          "type": "uint256"
+        }
+      ],
+      "name": "NewHome",
+      "type": "event"
     },
     {
       "anonymous": false,
@@ -426,5 +551,5 @@ module.exports = {
       "type": "event"
     }
   ],
-  homeContractEventAddress: '0x01a1F5F6Dc5AB93A2E3c1af3CA85e768dAA228d9'
+  homeContractEventAddress: '0x050048FB7BEfB27808E0F73CFb93c0069A766C47'
 };
