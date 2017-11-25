@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     owner: DataTypes.TEXT,
     name: DataTypes.TEXT,
     description: DataTypes.TEXT,
-    price: DataTypes.TEXT,
+    price: DataTypes.DOUBLE,
     streetAddress: DataTypes.TEXT,
     guests: DataTypes.INTEGER,
     bedroom: DataTypes.INTEGER,

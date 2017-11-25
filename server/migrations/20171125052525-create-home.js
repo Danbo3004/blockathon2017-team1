@@ -22,7 +22,7 @@ module.exports = {
         type: Sequelize.TEXT
       },
       price: {
-        type: Sequelize.TEXT
+        type: Sequelize.DOUBLE
       },
       streetAddress: {
         type: Sequelize.TEXT
