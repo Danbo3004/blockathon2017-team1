@@ -3,7 +3,7 @@
 /**
  * Module dependencies.
  */
-let config = require('./config'),
+let config = require('./appConfig'),
   express = require('express'),
   path = require('path'),
   logger = require('morgan'),
