@@ -45,6 +45,26 @@ export class Home {
   }
 }
 
+export class HomeBooking {
+  contractAddress = '';
+  checkInDate = new Date();
+  checkOutDate = new Date();
+
+  fromJson(json: any) {
+    if (!json) {
+      return this;
+    }
+
+    this.contractAddress = json.contractAddress;
+    let startTime = +json.startDate;
+    let duration = +json.duration;
+    let endTime = startTime + duration;
+    this.checkInDate = new Date(startTime);
+    this.checkOutDate = new Date(endTime);
+    return this;
+  }
+}
+
 export class HomeCapacity {
   guest = 0;
   bedroom = 0;

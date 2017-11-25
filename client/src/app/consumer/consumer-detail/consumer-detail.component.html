@@ -59,8 +59,27 @@
             </div>
           </div>
         </div>
-        <div class="history-container" id="#history"  *ngIf="loadView === 2"></div>
-        <div class="status-container" id="#status"  *ngIf="loadView === 3"></div>
+        <div class="history-container" id="#history" *ngIf="loadView === 2">
+          <table class="ui celled table">
+            <thead>
+              <tr>
+                <th>No.</th>
+                <th>Check in</th>
+                <th>Check out</th>
+                <th>Rating</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let booking of bookings; let i = index;">
+                <td>{{i + 1}}</td>
+                <td>{{booking.checkInDate}}</td>
+                <td>{{booking.checkOutDate}}</td>
+                <td>-</td>
+              </tr>
+           </tbody>
+          </table>
+        </div>
+        <div class="status-container" id="#status" *ngIf="loadView === 3"></div>
       </div>
       <div class="eight wide column booking-section">
         <app-booking [home]="home"></app-booking>

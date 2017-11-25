@@ -13,7 +13,7 @@ export const routes: Routes = [
     path: 'consumer', component: ConsumerLayoutComponent,
     children: [
       { path: 's', component: ConsumerSearchListComponent },
-      { path: 'home/:homeId', component: ConsumerDetailComponent }
+      { path: 'home/:homeAddress', component: ConsumerDetailComponent }
     ]
   },
   { path: 'app', loadChildren: 'app/main/main.module#MainModule', canActivate: [ AuthenticationGuard ] },
