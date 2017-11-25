@@ -169,7 +169,7 @@ contract Home {
   }
 
   function resolveConflict (address _consumer, uint _consumerRate) public onlyJudge payable {
-    uint amount = bookdataHistory[_consumer].income * (_consumerRate / 100);
+    uint amount = bookdataHistory[_consumer].income * _consumerRate / 100;
     _consumer.transfer(amount);
     resolveHistory[_consumer] = amount;
     availableAmount -= amount;
