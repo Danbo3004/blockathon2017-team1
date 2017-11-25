@@ -15,15 +15,17 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { ConsumerSearchItemComponent } from './consumer-search-item/consumer-search-item.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   imports: [
     CommonModule, RouterModule, MatIconModule, SharedModule, StarRatingModule.forRoot(),
-    MatFormFieldModule, MatInputModule, MatSelectModule,
+    MatFormFieldModule, MatInputModule, MatSelectModule, MatCardModule,
     MatButtonModule, MatCheckboxModule, MatIconModule,
   ],
   declarations: [ConsumerComponent, ConsumerNavbarComponent, ConsumerLayoutComponent,
-    ConsumerSearchListComponent, ConsumerDetailComponent, BookingComponent],
+    ConsumerSearchListComponent, ConsumerDetailComponent, BookingComponent, ConsumerSearchItemComponent],
   exports: [ConsumerComponent, ConsumerLayoutComponent]
 })
 export class ConsumerModule { }
