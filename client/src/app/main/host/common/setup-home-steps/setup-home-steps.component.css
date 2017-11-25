@@ -1,7 +1,3 @@
-.percent-25-width {
-    width: 23%;
-}
-
 .active.step:hover {
     cursor: pointer;
 }
@@ -12,4 +8,8 @@
 
 .ui.steps .step.active.selected, .ui.steps .step.active.selected:after {
     background-color: white;
+}
+
+.ui.ordered.steps {
+    width: 100%;
 }

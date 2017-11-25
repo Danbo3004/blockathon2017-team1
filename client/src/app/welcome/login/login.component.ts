@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => this.returnUrl = '/app/host');
+    this.route.queryParams.subscribe(params => this.returnUrl = params['returnUrl'] || '/app/host');
   }
 
   onBrowseClicked(input: boolean, event: Event) {

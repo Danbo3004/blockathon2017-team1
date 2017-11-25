@@ -100,17 +100,23 @@
         <mat-form-field class="full-width" *ngIf="home.kind === 1">
           <input type="number" [(ngModel)]="home.price" [ngModelOptions]="{standalone: true}" matInput placeholder="Private room (cost for one room)">
         </mat-form-field>
+        <table class="full-width" cellspacing="0"><tr>
+          <td><mat-form-field class="full-width">
+            <input type="number" matInput [(ngModel)]="home.capacity.bedroom" [ngModelOptions]="{standalone: true}" placeholder="Bedrooms">
+          </mat-form-field></td>
+          <td><mat-form-field class="full-width">
+            <input type="number" matInput [(ngModel)]="home.capacity.bed" [ngModelOptions]="{standalone: true}" placeholder="Beds">
+          </mat-form-field></td>
+          <td><mat-form-field class="full-width">
+            <input type="number" matInput [(ngModel)]="home.capacity.bath" [ngModelOptions]="{standalone: true}" placeholder="Bath">
+          </mat-form-field></td>
+        </tr></table>
         <mat-form-field class="full-width" *ngIf="home.kind === 2">
           <input type="number" [(ngModel)]="home.price" [ngModelOptions]="{standalone: true}" matInput placeholder="Shared room (cost for one person)">
         </mat-form-field>
         <br>
-        <button class="right" mat-raised-button color="warn">Next</button>
+        <button class="right submit" (click)="onSubmitClicked()" mat-raised-button color="warn">Host your place</button>
       </form>
-    </div>
-    <div class="senses-information" *ngIf="selectedStep === 4">
-      <h2>Show travelers what your space looks like</h2>
-      <app-ng-uploader></app-ng-uploader>
-      <button class="right submit" (click)="onSubmitClicked()" mat-raised-button color="warn">Host your place</button>
     </div>
   </div>
 </div>

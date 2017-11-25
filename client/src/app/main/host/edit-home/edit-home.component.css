@@ -11,12 +11,19 @@
 
 .place-information form button, .location-information form button,
 .features-information form button,  .price-information form button {
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
-.place-information, .price-information {
+.place-information {
     height: 50%;
     width: 30%;
+    margin-top: -10rem;
+    text-align: center;
+}
+
+.price-information {
+    height: 50%;
+    width: 40%;
     margin-top: -10rem;
     text-align: center;
 }
