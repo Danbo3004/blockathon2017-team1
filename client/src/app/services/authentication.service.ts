@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { EthereumTx } from 'ethereumjs-tx';
+
+declare type Tx = any;
 
 @Injectable()
 export class AuthenticationService {
@@ -16,7 +17,7 @@ export class AuthenticationService {
     this.currentWallet = wallet;
   }
 
-  signTransaction(tx: EthereumTx) {
+  signTransaction(tx: Tx) {
     if (!this.wallet) {
       throw new Error('No wallet to use.');
     }

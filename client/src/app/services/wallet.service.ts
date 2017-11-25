@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-import Wallet from 'ethereumjs-wallet-browser';
+const Wallet: any = (<any>window).ethereumjs.Wallet;
+declare type Wallet = any;
 
 @Injectable()
 export class WalletService {
