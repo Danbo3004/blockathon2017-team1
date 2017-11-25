@@ -34,7 +34,7 @@ export class EditHomeComponent implements OnInit {
 
   onSubmitClicked() {
     if (this.contractAddress) {
-      this.homeService.updateHome(this.home);
+      this.homeService.updateInfo(this.home);
     } else {
       this.homeService.newHome(this.home);
     }

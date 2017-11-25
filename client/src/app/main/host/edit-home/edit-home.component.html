@@ -3,20 +3,13 @@
   <div class="fill-information-container">
     <div class="place-information" *ngIf="selectedStep === 0">
       <form (submit)="onNextStep(1)">
-        <h2>What kind of place are you listing?</h2>
+        <h2>What's the most interesting in your place?</h2>
         <mat-form-field class="full-width">
-          <mat-select placeholder="What will guests have?" [(value)]="home.kind">
-            <mat-option [value]="1">
-              Private room
-            </mat-option>
-            <mat-option [value]="2">
-              Shared room
-            </mat-option>
-          </mat-select>
+          <input type="text" matInput placeholder="Place name" [(ngModel)]="home.name" [ngModelOptions]="{standalone: true}">
         </mat-form-field>
         <br>
         <mat-form-field class="full-width">
-          <input type="number" matInput placeholder="How many number of guests" [(ngModel)]="home.capacity.guest" [ngModelOptions]="{standalone: true}">
+          <textarea matInput placeholder="Place description" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"></textarea>
         </mat-form-field>
         <button type="submit" class="right" mat-raised-button color="warn">Next</button>
       </form>
@@ -89,7 +82,21 @@
     </div>
     <div class="price-information" *ngIf="selectedStep === 3">
       <form (submit)="onNextStep(4)">
-        <h2>How much for one night?</h2>
+        <h2>What kind of place are you listing?</h2>
+        <mat-form-field class="full-width">
+          <mat-select placeholder="What will guests have?" [(value)]="home.kind">
+            <mat-option [value]="1">
+              Private room
+            </mat-option>
+            <mat-option [value]="2">
+              Shared room
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="full-width">
+          <input type="number" matInput placeholder="How many number of guests" [(ngModel)]="home.capacity.guest" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
         <mat-form-field class="full-width" *ngIf="home.kind === 1">
           <input type="number" [(ngModel)]="home.price" [ngModelOptions]="{standalone: true}" matInput placeholder="Private room (cost for one room)">
         </mat-form-field>
