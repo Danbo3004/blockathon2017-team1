@@ -93,7 +93,7 @@ contract Home {
     }
   }
 
-  function getBookedData() returns (BookData[]) {
+  function getBookedData() public returns (BookData[]) {
     BookData[] _data;
     for (uint i = 0; i < bookedDataIndex.length; i++) {
       _data.push(bookedData[bookedDataIndex[i]]);
