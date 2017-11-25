@@ -14,7 +14,7 @@ contract EventContract {
     event Cancel(address caller, bytes32 _bookDataHash, uint _cancelledAt);
     event Checkin(address caller, bytes32 _bookDataHash, uint _checkinAt);
     event Checkout(address caller, bytes32 _bookDataHash, uint _checkoutAt);
-    event RequireResolve(address caller, address _bookDataHash, string _message);
+    event RequireResolve(address caller, bytes32 _bookDataHash, string _message);
     
     function updateInfo(string _name, string _description, string _streetAddress, uint _price) public {
         UpdateInfo(msg.sender, _name, _description, _streetAddress, _price);
@@ -37,7 +37,7 @@ contract EventContract {
     function checkout(bytes32 _bookDataHash, uint _checkoutAt) public {
         Checkout(msg.sender, _bookDataHash, _checkoutAt);
     }
-    function requireResolve (address _bookDataHash, string _message) public {
+    function requireResolve (bytes32 _bookDataHash, string _message) public {
         RequireResolve(msg.sender, _bookDataHash, _message);
     }
 

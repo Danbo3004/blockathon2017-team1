@@ -3,7 +3,7 @@ pragma solidity 0.4.18;
 import "./EventContract.sol";
 
 contract Home {
-  address constant EVENT_ADDRESS = 0x2446d0843e57df4ac3a0bea871a6594f30183d50;
+  address constant EVENT_ADDRESS = 0x01a1F5F6Dc5AB93A2E3c1af3CA85e768dAA228d9;
 
   struct HomeCapacity {
     uint guests;
