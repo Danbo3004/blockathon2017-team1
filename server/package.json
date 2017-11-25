@@ -1,5 +1,5 @@
 {
-  "name": "c2c_poc",
+  "name": "blockathon2017-c2c",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -22,9 +22,11 @@
     "pg-hstore": "^2.3.2",
     "querystring": "^0.2.0",
     "sequelize": "^4.22.15",
-    "serve-favicon": "~2.2.0"
+    "serve-favicon": "~2.2.0",
+    "web3": "^1.0.0-beta.26"
   },
   "devDependencies": {
+    "eslint": "^4.11.0",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
     "gulp-jshint": "^2.0.1",
@@ -34,6 +36,7 @@
     "gulp-watch": "^4.3.4",
     "jshint": "^2.9.3",
     "jshint-stylish": "^2.2.1",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "sequelize-cli": "^3.1.0"
   }
 }

@@ -1,32 +1,23 @@
-'use strict';
-
-/**
- * Module dependencies.
- */
-var _ = require('lodash');
-var path = require('path');
-
-/**
- * Initialize global configuration
- */
-var initGlobalConfig = function () {
-
-    if (typeof process.env.NODE_ENV === 'undefined') {
-        process.env.NODE_ENV = 'development';
-    }
-    // Get the default config
-    var defaultConfig = require(path.join(appRoot, '/config/env/default'));
-
-    // Get the current config
-    var environmentConfig = require(path.join(appRoot, '/config/env/', process.env.NODE_ENV)) || {};
-
-    // Merge config files
-    var config = _.merge(defaultConfig, environmentConfig);
-
-    return config;
+module.exports = {
+  "development": {
+    "username": null,
+    "password": null,
+    "database": "c2cdev",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": null,
+    "password": null,
+    "database": "c2ctest",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    username: process.env.PROD_DB_USERNAME,
+    password: process.env.PROD_DB_PASSWORD,
+    database: process.env.PROD_DB_NAME,
+    host: process.env.PROD_DB_HOSTNAME,
+    "dialect": "postgres"
+  }
 };
-
-/**
- * Set configuration object
- */
-module.exports = initGlobalConfig();
