@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Home.associate = function(models) {
+    Home.hasMany(models.HomeBooking);
     Home.hasMany(models.HomeReview);
   };
 

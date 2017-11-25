@@ -34,7 +34,6 @@ homeContractEventInstance.allEvents(function (error, log) {
           return models.Home.create(values);
         }
       });
-      break;
     case 'UpdateInfo':
       models.Home.findOne({
         where: {
@@ -55,7 +54,6 @@ homeContractEventInstance.allEvents(function (error, log) {
           return models.Home.create(values);
         }
       });
-      break;
     case 'UpdateCapacity':
       models.Home.findOne({
         where: {
@@ -76,7 +74,6 @@ homeContractEventInstance.allEvents(function (error, log) {
           return models.Home.create(values);
         }
       });
-      break;
     case 'UpdateFeature':
       models.Home.findOne({
         where: {
@@ -97,7 +94,12 @@ homeContractEventInstance.allEvents(function (error, log) {
           return models.Home.create(values);
         }
       });
-      break;
+    case 'Book':
+      return models.HomeBooking.create({
+        contractAddress: log.args.caller,
+        startDate: log.args._startDate,
+        duration: log.args._duration
+      });
     default:
   }
 });
