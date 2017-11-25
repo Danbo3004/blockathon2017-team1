@@ -19,12 +19,14 @@ import { ConsumerSearchItemComponent } from './consumer-search-item/consumer-sea
 import { MatCardModule } from '@angular/material/card';
 import { ConsumerService } from '../services/consumer.service';
 import { TruncateModule } from 'ng2-truncate';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   imports: [
     CommonModule, RouterModule, MatIconModule, SharedModule, StarRatingModule.forRoot(),
     MatFormFieldModule, MatInputModule, MatSelectModule, MatCardModule,
-    MatButtonModule, MatCheckboxModule, MatIconModule, TruncateModule
+    MatButtonModule, MatCheckboxModule, MatIconModule, TruncateModule, FormsModule, HttpModule 
   ],
   declarations: [ConsumerComponent, ConsumerNavbarComponent, ConsumerLayoutComponent,
     ConsumerSearchListComponent, ConsumerDetailComponent, BookingComponent, ConsumerSearchItemComponent],
