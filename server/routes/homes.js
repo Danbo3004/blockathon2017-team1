@@ -7,9 +7,11 @@ const Op = models.Sequelize.Op;
 router.get('/homes', function(req, res) {
   models.Home.getAll({
     where: {
-      name: {
-        [Op.like]: '%' + req.query.keyword
-      }
+      [Op.or]: [
+        { name: { [Op.like]: '%' + req.query.keyword + '%' } },
+        { description: { [Op.like]: '%' + req.query.keyword + '%' } },
+        { streetAddress: { [Op.like]: '%' + req.query.keyword + '%' } }
+      ]
     }
   }).then(function() {
     res.redirect('/');

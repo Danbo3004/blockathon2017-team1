@@ -2,15 +2,26 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('Homes', {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        type: Sequelize.INTEGER
+      },
       contractAddress: {
         allowNull: false,
         primaryKey: true,
+        type: Sequelize.TEXT
+      },
+      owner: {
         type: Sequelize.TEXT
       },
       name: {
         type: Sequelize.TEXT
       },
       description: {
+        type: Sequelize.TEXT
+      },
+      price: {
         type: Sequelize.TEXT
       },
       streetAddress: {

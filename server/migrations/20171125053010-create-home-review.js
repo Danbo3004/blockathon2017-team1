@@ -2,6 +2,11 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('HomeReviews', {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        type: Sequelize.INTEGER
+      },
       contractAddress: {
         allowNull: false,
         primaryKey: true,

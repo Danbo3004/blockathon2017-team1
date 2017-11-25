@@ -9,7 +9,7 @@
         </mat-form-field>
         <br>
         <mat-form-field class="full-width">
-          <textarea matInput placeholder="Place description" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"></textarea>
+          <textarea matInput [(ngModel)]="home.description" [ngModelOptions]="{standalone: true}" placeholder="Place description" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5"></textarea>
         </mat-form-field>
         <button type="submit" class="right" mat-raised-button color="warn">Next</button>
       </form>
