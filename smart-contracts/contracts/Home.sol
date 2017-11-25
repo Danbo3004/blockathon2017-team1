@@ -76,6 +76,8 @@ contract Home {
   mapping (uint => bytes32) public bookedDates; // index by day
   mapping (bytes32 => Review) public reviews;
 
+  bytes32[] public bookedDataIndex;
+
   // Event notification
   EventContract eventContract;
 
@@ -89,6 +91,14 @@ contract Home {
     if (msg.sender == owner) {
       _;
     }
+  }
+
+  function getBookedData() returns (BookData[]) {
+    BookData[] _data;
+    for (uint i = 0; i < bookedDataIndex.length; i++) {
+      _data.push(bookedData[bookedDataIndex[i]]);
+    }
+    return _data;
   }
 
   function getDetail() public constant returns (HomeData) {
@@ -153,6 +163,7 @@ contract Home {
       bytes32 bookDataHash = keccak256(newBookData.booker, newBookData.startDate, newBookData.duration,
         newBookData.bookedAt, newBookData.isValid, newBookData.sentAmount);
       bookedData[bookDataHash] = newBookData;
+      bookedDataIndex.push(bookDataHash);
       bookedHomeData[bookDataHash] = detail;
 
       for (uint i = 0; i < _duration; i++) {
