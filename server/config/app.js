@@ -11,7 +11,8 @@ let config = require('./appConfig'),
   bodyParser = require('body-parser'),
   routesApi = require('../routes/index'),
   validator = require('express-validator'),
-  constant = require('../const/siteconst');
+  constant = require('../const/siteconst'),
+  web3 = require('../web3');
 
 module.exports.start = function start() {
   let app = express();
