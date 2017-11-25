@@ -415,5 +415,6 @@ export const environment = {
       'stateMutability': 'nonpayable',
       'type': 'constructor'
     }
-  ]
+  ],
+  judgeAddress: "0xa2a13119a74b91bc7e7c1a039d061cbb333f721f"
 };

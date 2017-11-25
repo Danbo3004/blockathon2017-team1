@@ -24,7 +24,7 @@ export abstract class HomeService {
       const from = '0x' + this.authenticationService.wallet.getAddress().toString('hex');
       const gas = web3.toHex(web3.eth.estimateGas({ data: environment.homeContractCode }));
       const gasPrice = web3.toHex(environment.defaultGasPrice);
-      const data = HomeContract.new.getData(home.name, home.description, home.address.streetAddress, home.price, {
+      const data = HomeContract.new.getData(environment.judgeAddress, home.name, home.description, home.address.streetAddress, home.price, {
         data: environment.homeContractCode
       });
 
