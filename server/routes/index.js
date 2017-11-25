@@ -32,6 +32,16 @@ module.exports = function () {
     });
   });
 
+  router.get('/homes/:address', function(req, res) {
+    models.Home.findOne({
+      where: {
+        contractAddress: req.params.address
+      }
+    }).then(function(home) {
+      res.send(home)
+    });
+  });
+
   router.get('/owners/:address/homes', function(req, res) {
     models.Home.findAll({
       where: {
