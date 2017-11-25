@@ -28,7 +28,7 @@ export class EditHomeComponent implements OnInit {
     const home = new Home();
 
     if (this.contractAddress) {
-      this.homeService.updateHome(this.contractAddress, home);
+      this.homeService.updateHome(home);
     } else {
       this.homeService.newHome(home);
     }
