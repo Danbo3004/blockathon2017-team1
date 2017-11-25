@@ -8,6 +8,5 @@ contract TestHome {
   uint public initialBalance = 4 ether;
 
   function testBook() public {
-    Home h = Home(DeployedAddresses.Home());
   }
 }
