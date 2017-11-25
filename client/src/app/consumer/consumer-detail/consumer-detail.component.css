@@ -12,7 +12,7 @@
     width: 100%;
     min-width: 100%;
     height: calc(100% - 30px);
-    overflow-y: auto !important;
+    /* overflow-y: auto !important; */
 }
 
 .ps {
@@ -28,7 +28,7 @@
 }
 
 .image-container {
-    background-image: url("https://a0.muscache.com/im/pictures/881d76c6-4de6-4808-9f0b-36462b6c48a2.jpg?aki_policy=large");
+    background-image: url("http://mytechshout.com/wp-content/uploads/2016/07/Bridge-facebook-HD-cover-photo.jpg");
     background-repeat: no-repeat !important;
     background-size: cover !important;
     background-position: 50% 50% !important;
@@ -59,6 +59,10 @@
     text-decoration: none;
     font-weight: 700;
     color: #ddd;
+}
+
+.info-container .menu-list ul li:hover {
+    cursor: pointer;
 }
 
 .info-container .menu-list ul li.selected a{

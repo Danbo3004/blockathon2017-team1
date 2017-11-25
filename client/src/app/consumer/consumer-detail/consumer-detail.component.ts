@@ -8,8 +8,13 @@ import { Home } from '../../models/home';
 })
 export class ConsumerDetailComponent implements OnInit {
   public home = new Home();
+  loadView: number = 1;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onLoadView(view: number) {
+    this.loadView = view;
   }
 }

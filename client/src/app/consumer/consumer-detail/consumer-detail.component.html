@@ -1,26 +1,26 @@
 <div class="page-layout carded fullwidth ps" fuseperfectscrollbar="" id="product">
   <div class="image-container">
     <span>
-      <img class="hide" src="https://a0.muscache.com/im/pictures/881d76c6-4de6-4808-9f0b-36462b6c48a2.jpg?aki_policy=large" width="0">
+      <img class="hide" src="http://mytechshout.com/wp-content/uploads/2016/07/Bridge-facebook-HD-cover-photo.jpg" width="0">
     </span>
   </div>
   <div class="info-container">
     <div class="ui grid detail-section">
-      <div class="eight wide column">
+      <div class="eight wide column info-section">
         <div class="menu-list">
           <ul>
-            <li class="selected">
-              <a href="#overview">Overview</a>
+            <li [class.selected]="loadView === 1">
+              <a (click)="onLoadView(1)">Overview</a>
             </li>
-            <li>
-              <a href="#history">History</a>
+            <li [class.selected]="loadView === 2">
+              <a (click)="onLoadView(2)">History</a>
             </li>
-            <li>
-              <a href="#status">Status</a>
+            <li [class.selected]="loadView === 3">
+              <a (click)="onLoadView(3)">Status</a>
             </li>
           </ul>
         </div>
-        <div class="overview-container" id="#overview">
+        <div class="overview-container" id="#overview" *ngIf="loadView === 1">
           <div class="header">
             <h1>{{home.name}}</h1>
           </div>
@@ -59,10 +59,10 @@
             </div>
           </div>
         </div>
-        <div class="history-container" id="#history"></div>
-        <div class="status-container" id="#status"></div>
+        <div class="history-container" id="#history"  *ngIf="loadView === 2"></div>
+        <div class="status-container" id="#status"  *ngIf="loadView === 3"></div>
       </div>
-      <div class="eight wide column">
+      <div class="eight wide column booking-section">
         <app-booking [home]="home"></app-booking>
       </div>
     </div>

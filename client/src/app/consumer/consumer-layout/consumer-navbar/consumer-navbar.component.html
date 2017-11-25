@@ -1,6 +1,6 @@
 <div class="ui secondary menu grid">
-  <div class="two wide column">
-    <strong>Anywhere</strong>
+  <div class="two wide column" style="display: flex; align-items: center;">
+    <strong style="font-size:16px;">Anywhere</strong>
   </div>
   <div class="nine wide column">
     <div class="ui icon input">
@@ -9,15 +9,15 @@
     </div>
     <i class="options icon" (click)="onShowFilter()"></i>
   </div>
-  <div class="four wide column">
+  <div class="five wide column">
     <nav>
-      <ul class="menu-list">
+      <ul class="menu-list" style="display: flex; justify-content: flex-end;">
         <li>
-          <a href="#">Become a host</a>
+          <a routerLink="/app/home/new">Become a host</a>
         </li>
         <li>
-          <a href="#">Log in</a>
-        </li>
+          <a routerLink="/login">Log in</a>
+      </li>
       </ul>
     </nav>
   </div>
