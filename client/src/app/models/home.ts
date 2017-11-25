@@ -12,33 +12,33 @@ export enum HomeKind {
 }
 
 export class Home {
-  contractAddress: string = '';
-  name: string = '';
-  description: string = '';
+  contractAddress = '';
+  name = '';
+  description = '';
   address: HomeAddress = new HomeAddress();
   capacity: HomeCapacity = new HomeCapacity();
   feature: HomeFeature = new HomeFeature();
-  price: number = 0;
+  price = 0;
   kind: HomeKind = HomeKind.PrivateRoom;
 }
 
 export class HomeCapacity {
-  guest: number = 0;
-  bedroom: number = 0;
-  bed: number = 0;
-  bath: number = 0;
+  guest = 0;
+  bedroom = 0;
+  bed = 0;
+  bath = 0;
 }
 
 export class HomeFeature {
-  internet: boolean = false;
-  kitchen: boolean = false;
-  iron: boolean = false;
-  hangers: boolean = false;
+  internet = false;
+  kitchen = false;
+  iron = false;
+  hangers = false;
 }
 
 export class HomeAddress {
-  streetAddress: string = '';
-  apt: number = 0;
-  state: number = 0;
-  country: number = 0;
+  streetAddress = '';
+  apt = 0;
+  state = 0;
+  country = 0;
 }

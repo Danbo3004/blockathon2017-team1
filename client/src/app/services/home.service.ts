@@ -5,7 +5,17 @@ import { web3 } from './web3.service';
 import { environment } from '../../environments/environment';
 import { AuthenticationService } from './authentication.service';
 import Tx from 'ethereumjs-tx';
-export const HomeContract = new web3.eth.contract(environment.homeContractAbi);
+
+export const HomeContract = web3.eth.contract(environment.homeContractAbi);
+const HomeContractEvent = web3.eth.contract(environment.homeContractEventAbi);
+
+const homeContractEventInstance = HomeContractEvent.at(environment.homeContractEventAddress);
+homeContractEventInstance.allEvents(function (error, log) {
+  debugger;
+  if (!error) {
+    console.log(log);
+  }
+});
 
 @Injectable()
 export abstract class HomeService {

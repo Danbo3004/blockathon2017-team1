@@ -110,6 +110,7 @@ contract Home {
     refundRate = 100;
 
     eventContract = EventContract(EVENT_ADDRESS);
+    eventContract.newHome(msg.sender, _name, _description, _streetAddress, _price);
   }
 
   function updateInfo(string _name, string _description, string _streetAddress, uint _price) public onlyOwner {
