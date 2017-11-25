@@ -20,13 +20,32 @@ export class AuthenticationService {
     this.currentWallet = wallet;
   }
 
-  sendTransaction(data: string, gas: string, value?: string): Observable<string> {
+  deployContract(data: string, gas: string, value?: string): Observable<string> {
     return Observable.fromPromise(new Promise((resolve, reject) => {
       const nonce = web3.toHex(web3.eth.getTransactionCount('0x' + this.currentWallet.getAddress().toString('hex')));
       const from = '0x' + this.currentWallet.getAddress().toString('hex');
       const gasPrice = web3.toHex(environment.defaultGasPrice);
 
       const txParams = { nonce: nonce, from: from, gas: gas, gasPrice: gasPrice, data: data, value: value || '0x00' };
+      const tx = new Tx(txParams);
+      tx.sign(this.currentWallet.getPrivateKey());
+      web3.eth.sendRawTransaction('0x' + tx.serialize().toString('hex'), (error, hash) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(hash);
+        }
+      });
+    }));
+  }
+
+  sendTransactionTo(to: string, data: string, gas: string, value?: string): Observable<string> {
+    return Observable.fromPromise(new Promise((resolve, reject) => {
+      const nonce = web3.toHex(web3.eth.getTransactionCount('0x' + this.currentWallet.getAddress().toString('hex')));
+      const from = '0x' + this.currentWallet.getAddress().toString('hex');
+      const gasPrice = web3.toHex(environment.defaultGasPrice);
+
+      const txParams = { to: to, nonce: nonce, from: from, gas: gas, gasPrice: gasPrice, data: data, value: value || '0x00' };
       const tx = new Tx(txParams);
       tx.sign(this.currentWallet.getPrivateKey());
       web3.eth.sendRawTransaction('0x' + tx.serialize().toString('hex'), (error, hash) => {

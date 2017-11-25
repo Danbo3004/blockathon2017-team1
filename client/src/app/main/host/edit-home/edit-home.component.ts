@@ -36,7 +36,12 @@ export class EditHomeComponent implements OnInit {
     if (this.contractAddress) {
       this.homeService.updateInfo(this.home);
     } else {
-      this.homeService.newHome(this.home);
+      this.homeService.newHome(this.home)
+        .flatMap(home => this.homeService.updateCapacity(home))
+        .flatMap(home => this.homeService.updateFeature(home))
+        .subscribe(home => {
+          console.log(home);
+        }, error => console.error(error));
     }
   }
 

@@ -8,17 +8,29 @@ export const web3 = new Web3(new Web3.providers.HttpProvider(environment.network
 @Injectable()
 export class Web3Service {
 
-  constructor() { }
+  private callbackRegistry: {[hash: string]: any} = {};
 
-  getTransactionCount(address: string): Observable<number> {
-    return Observable.fromPromise(new Promise((resolve, reject) => {
-      web3.eth.getTransactionCount(address, (error, response) => {
-        if (error) {
-          reject(error);
-        } else {
-          resolve(response);
-        }
-      });
-    }));
+  constructor() {
+    const HomeContractEvent = web3.eth.contract(environment.homeContractEventAbi);
+
+    const homeContractEventInstance = HomeContractEvent.at(environment.homeContractEventAddress);
+    homeContractEventInstance.allEvents((error, log) => {
+      if (error) {
+        return;
+      }
+
+      if (this.callbackRegistry[log.transactionHash]) {
+        this.callbackRegistry[log.transactionHash](error, log);
+        delete this.callbackRegistry[log.transactionHash];
+      }
+    });
+  }
+
+  registerCallback(txHash: string, callback: any) {
+    this.callbackRegistry[txHash] = callback;
+  }
+
+  clearCallbackRegistry() {
+    this.callbackRegistry = {};
   }
 }

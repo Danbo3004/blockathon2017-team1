@@ -4,14 +4,16 @@ import { Home } from '../models/home';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import { AuthenticationService } from './authentication.service';
+import { Web3Service } from './web3.service';
 
 @Injectable()
 export class InternalHomeService extends HomeService {
   constructor(
+    web3Service: Web3Service,
     authenticationService: AuthenticationService,
     private http: HttpClient
   ) {
-    super(authenticationService);
+    super(web3Service, authenticationService);
   }
 
   getHomes(host: string): Observable<Home[]> {
