@@ -1,0 +1,17 @@
+{
+  "addons": [
+    {
+      "plan": "heroku-postgresql"
+    }
+  ],
+  "buildpacks": [],
+  "env": {
+    "NODE_ENV": {
+      "description": "Run as a production environment on Heroku",
+      "value": "production"
+    }
+  },
+  "formation": {},
+  "name": "blockathon2017-c2c",
+  "scripts": {}
+}
