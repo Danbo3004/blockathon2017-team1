@@ -1,4 +1,6 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Home } from '../../models/home';
+import { HomeService } from '../../services/home.service';
 declare const $: any;
 
 @Component({
@@ -6,11 +8,29 @@ declare const $: any;
   templateUrl: './booking.component.html',
   styleUrls: ['./booking.component.scss']
 })
-export class BookingComponent implements OnInit {
+export class BookingComponent implements OnInit, OnChanges {
+  @Input() home = new Home();
   @ViewChild('rangeend') checkOutRef: ElementRef;
   @ViewChild('rangestart') checkInRef: ElementRef;
+  checkInTime = 0;
+  checkOutTime = 0;
+  duration = 0;
+  rangeGuests: number [] = [];
+  guests: number = 1;
 
-  constructor() { }
+  constructor(private homeService: HomeService) { 
+    this.home.price = 1;
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['home'] && changes['home'].currentValue) {
+      this.home.capacity.guest = 6;
+      this.rangeGuests  = [];
+      for (let i =1; i <= this.home.capacity.guest; i++) {
+        this.rangeGuests.push(i);
+      }
+    }
+  }
 
   ngOnInit() {
     setTimeout(() => {
@@ -23,7 +43,9 @@ export class BookingComponent implements OnInit {
       type: 'date',
       endCalendar: $(this.checkOutRef.nativeElement),
       onChange: (date, text) => {
-        console.log(date, text);
+        if (date) {
+          this.checkInTime = ~~(date.getTime() * 1.15740741e-8);
+        }
       }
     });
 
@@ -31,9 +53,23 @@ export class BookingComponent implements OnInit {
       type: 'date',
       startCalendar: $(this.checkInRef.nativeElement),
       onChange: (date, text) => {
-        console.log(date, text);
+        if (date) {
+          this.checkOutTime = ~~(date.getTime() * 1.15740741e-8);
+        }
       }
     });
   }
 
+  get price() {
+    if (!this.checkOutTime || !this.checkInTime) {
+      return this.home.price;
+    }
+
+    let duration = this.checkOutTime - this.checkInTime;
+    return this.home.price * duration;
+  }
+
+  onBooking() {
+
+  }
 }

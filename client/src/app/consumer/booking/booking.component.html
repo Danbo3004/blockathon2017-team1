@@ -1,7 +1,7 @@
 <div class="booking-container">
   <div class="top-section">
     <span class="cost">
-      <strong>ETH 600000</strong> per night</span>
+      <strong>ETH {{price}}</strong></span>
     <span class="rate">
       <star-rating-comp [starType]="'svg'" [rating]="2.63"></star-rating-comp>
     </span>
@@ -26,18 +26,12 @@
       </div>
     </div>
     <mat-form-field class="full-width">
-      <mat-select placeholder="Guests">
-        <mat-option [value]="1">
-          1 Guest
-        </mat-option>
-        <mat-option [value]="2">
-          2 Guests
-        </mat-option>
-        <mat-option [value]="3">
-          3 Guests
+      <mat-select placeholder="Guests" [(value)]="guests">
+        <mat-option [value]="1" *ngFor="let guest of rangeGuests">
+          {{guest}} {{guest > 1 ? 'guests' : 'guest'}}
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <button type="submit" class="full-width" mat-raised-button color="warn">Booking</button>
+    <button type="button" (click)="onBooking()" class="full-width" mat-raised-button color="warn">Booking</button>
   </div>
 </div>

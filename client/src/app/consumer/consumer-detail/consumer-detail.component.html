@@ -16,67 +16,54 @@
               <a href="#history">History</a>
             </li>
             <li>
-              <a href="#location">Location</a>
+              <a href="#status">Status</a>
             </li>
           </ul>
         </div>
         <div class="overview-container" id="#overview">
           <div class="header">
-            <h1>SUNSET CAVE HOUSE IN OIA</h1>
+            <h1>{{home.name}}</h1>
           </div>
           <div class="summarize">
             <ul>
               <li>
-                <i class="users icon"></i> 3 guests</li>
+                <i class="users icon"></i> {{home.capacity.guest}} {{home.capacity.guest > 1 ? 'guests' : 'guest'}}</li>
               <li>
-                <i class="building icon"></i> 1 bedroom</li>
+                <i class="building icon"></i> {{home.capacity.bedroom}} bedroom</li>
               <li>
-                <i class="hotel icon"></i> 1 bed</li>
+                <i class="hotel icon"></i> {{home.capacity.bed}} bed</li>
               <li>
-                <i class="bathtub icon"></i> 1 bath</li>
+                <i class="bathtub icon"></i> {{home.capacity.bath}} bath</li>
             </ul>
           </div>
           <div class="description">
             <span>
-              The Sunset Cave,located in a premium spot right on the cliff on the Caldera in Oia village,carefully & tastefully restored
-              offering a unique experience of Greek summer style accommodation!
-
-              The Sunset Cave,located in a premium spot right on the cliff on the Caldera in Oia village,carefully & tastefully restored
-              offering a unique experience of Greek summer style accommodation!
-
-              The Sunset Cave,located in a premium spot right on the cliff on the Caldera in Oia village,carefully & tastefully restored
-              offering a unique experience of Greek summer style accommodation!
+              {{home.description}}
             </span>
           </div>
           <div class="features">
             <div class="header">
               <h4>Amenities</h4>
             </div>
-            <div class="feature">
-              <i></i>
+            <div class="feature" *ngIf="home.feature.internet">
               <span>Internet</span>
             </div>
-            <div class="feature">
-              <i></i>
+            <div class="feature" *ngIf="home.feature.kitchen">
               <span>Kitchen</span>
             </div>
-            <div class="feature">
-              <i></i>
+            <div class="feature" *ngIf="home.feature.hanger">
               <span>Hanger</span>
             </div>
-            <div class="feature">
-              <i></i>
+            <div class="feature" *ngIf="home.feature.iron">
               <span>Iron</span>
             </div>
-
           </div>
-          <div class="senses"></div>
         </div>
         <div class="history-container" id="#history"></div>
-        <div class="location-container" id="#location"></div>
+        <div class="status-container" id="#status"></div>
       </div>
       <div class="eight wide column">
-        <app-booking></app-booking>
+        <app-booking [home]="home"></app-booking>
       </div>
     </div>
   </div>
