@@ -20,22 +20,21 @@ export abstract class HomeService {
 
   public newHome(home: Home): Observable<Home> {
     return Observable.fromPromise(new Promise<Home>((resolve, reject) => {
-      const txParams = {
-        nonce: web3.eth.getTransactionCount(this.authenticationService.wallet.getAddress()),
-        from: '0x' + this.authenticationService.wallet.getAddress().toString('hex'),
-        gas: web3.toHex(web3.eth.estimateGas({ data: environment.homeContractCode })),
-        gasPrice: web3.toHex(21000),
-        data: HomeContract.new.getData({
-          data: '0x' + environment.homeContractCode
-        })
-      };
+      const nonce = web3.toHex(web3.eth.getTransactionCount('0x' + this.authenticationService.wallet.getAddress().toString('hex')));
+      const from = '0x' + this.authenticationService.wallet.getAddress().toString('hex');
+      const gas = web3.toHex(web3.eth.estimateGas({ data: environment.homeContractCode }));
+      const gasPrice = web3.toHex(environment.defaultGasPrice);
+      const data = HomeContract.new.getData({
+        data: environment.homeContractCode
+      });
+
+      const txParams = { nonce: nonce, from: from, gas: gas, gasPrice: gasPrice, data: data };
       const tx = new Tx(txParams);
       this.authenticationService.signTransaction(tx);
-      web3.eth.sendRawTransaction(tx.serialize().toString('hex'), (error, hash) => {
+      web3.eth.sendRawTransaction('0x' + tx.serialize().toString('hex'), (error, hash) => {
         if (error) {
           reject(error);
         } else {
-          home.contractAddress = hash;
           resolve(home);
         }
       });
@@ -44,13 +43,13 @@ export abstract class HomeService {
 
   public updateHome(home: Home): Observable<Home> {
     return Observable.fromPromise(new Promise<Home>((resolve, reject) => {
-      const txParams = {
-        nonce: web3.eth.getTransactionCount(this.authenticationService.wallet.getAddress()),
-        from: '0x' + this.authenticationService.wallet.getAddress().toString('hex'),
-        gas: web3.toHex(web3.eth.estimateGas({ data: environment.homeContractCode })),
-        gasPrice: web3.toHex(21000),
-        data: HomeContract.at(home.contractAddress).updateInfo.getData(home)
-      };
+      const nonce = web3.toHex(web3.eth.getTransactionCount('0x' + this.authenticationService.wallet.getAddress().toString('hex')));
+      const from = '0x' + this.authenticationService.wallet.getAddress().toString('hex');
+      const gas = web3.toHex(web3.eth.estimateGas({ data: environment.homeContractCode }));
+      const gasPrice = web3.toHex(environment.defaultGasPrice);
+      const data = HomeContract.at(home.contractAddress).updateInfo.getData(home);
+
+      const txParams = { nonce: nonce, from: from, gas: gas, gasPrice: gasPrice, data: data };
       const tx = new Tx(txParams);
       this.authenticationService.signTransaction(tx);
       web3.eth.sendRawTransaction(tx.serialize().toString('hex'), (error, hash) => {
@@ -65,13 +64,13 @@ export abstract class HomeService {
 
   public bookHome(home: Home): Observable<any> {
     return Observable.fromPromise(new Promise<Home>((resolve, reject) => {
-      const txParams = {
-        nonce: web3.eth.getTransactionCount(this.authenticationService.wallet.getAddress()),
-        from: '0x' + this.authenticationService.wallet.getAddress().toString('hex'),
-        gas: web3.toHex(web3.eth.estimateGas({ data: environment.homeContractCode })),
-        gasPrice: web3.toHex(21000),
-        data: HomeContract.at(home.contractAddress).book.getData(home)
-      };
+      const nonce = web3.toHex(web3.eth.getTransactionCount('0x' + this.authenticationService.wallet.getAddress().toString('hex')));
+      const from = '0x' + this.authenticationService.wallet.getAddress().toString('hex');
+      const gas = web3.toHex(web3.eth.estimateGas({ data: environment.homeContractCode }));
+      const gasPrice = web3.toHex(environment.defaultGasPrice);
+      const data = HomeContract.at(home.contractAddress).book.getData(home);
+
+      const txParams = { nonce: nonce, from: from, gas: gas, gasPrice: gasPrice, data: data };
       const tx = new Tx(txParams);
       this.authenticationService.signTransaction(tx);
       web3.eth.sendRawTransaction(tx.serialize().toString('hex'), (error, hash) => {
