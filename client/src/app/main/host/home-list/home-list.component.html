@@ -1,11 +1,21 @@
-<div class="ui middle aligned divided list">
-  <div *ngFor="let home of homes" class="item">
-    <div class="right floated content">
-      <i class="write icon"></i>
-    </div>
-    <div class="content">
-      <a [routerLink]="['..', 'home', home.contractAddress]">{{ home.name }}</a>
-      <div class="description">{{ home.description }}</div>
-    </div>
+<div class="consumer-search-list-container ui grid">
+  <div class="consumer-search-item three wide column" *ngFor="let home of homes">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>{{home.name}}</mat-card-title>
+        <mat-card-subtitle>{{home.address.streetAddrerss}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="https://a0.muscache.com/im/pictures/881d76c6-4de6-4808-9f0b-36462b6c48a2.jpg?aki_policy=large" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        <p>
+          {{home.description | truncate : 300}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>CHECK IN</button>
+        <button mat-button>CHECK OUT</button>
+        <button mat-button>COLLECT MONEY</button>
+      </mat-card-actions>
+    </mat-card>
   </div>
 </div>

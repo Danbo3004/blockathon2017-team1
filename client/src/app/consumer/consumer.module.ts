@@ -17,7 +17,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ConsumerSearchItemComponent } from './consumer-search-item/consumer-search-item.component';
 import { MatCardModule } from '@angular/material/card';
-import { ConsumerService } from '../services/consumer.service';
 import { TruncateModule } from 'ng2-truncate';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -31,7 +30,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   declarations: [ConsumerComponent, ConsumerNavbarComponent, ConsumerLayoutComponent,
     ConsumerSearchListComponent, ConsumerDetailComponent, BookingComponent, ConsumerSearchItemComponent],
-  exports: [ConsumerComponent, ConsumerLayoutComponent],
-  providers: [ConsumerService]
+  exports: [ConsumerComponent, ConsumerLayoutComponent]
 })
 export class ConsumerModule { }

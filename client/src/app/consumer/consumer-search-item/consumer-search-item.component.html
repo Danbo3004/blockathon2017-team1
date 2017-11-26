@@ -1,13 +1,12 @@
 <mat-card class="example-card">
-    <mat-card-header>
-      <mat-card-title>{{home.name}}</mat-card-title>
-      <mat-card-subtitle>{{home.address.streetAddrerss}}</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="https://a0.muscache.com/im/pictures/881d76c6-4de6-4808-9f0b-36462b6c48a2.jpg?aki_policy=large" alt="Photo of a Shiba Inu">
-    <mat-card-content>
-      <p>
-        {{home.description | truncate : 300}}
-      </p>
-    </mat-card-content>
-  </mat-card>
-  
+  <mat-card-header>
+    <mat-card-title>{{home.name}}</mat-card-title>
+    <mat-card-subtitle>{{home.address.streetAddrerss}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="https://a0.muscache.com/im/pictures/881d76c6-4de6-4808-9f0b-36462b6c48a2.jpg?aki_policy=large" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <p>
+      {{home.description | truncate : 300}}
+    </p>
+  </mat-card-content>
+</mat-card>

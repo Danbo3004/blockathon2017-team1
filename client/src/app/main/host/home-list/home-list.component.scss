@@ -1,0 +1,17 @@
+.consumer-search-list-container {
+    padding: 20px;
+    height: 100%;
+    overflow-y: auto;
+    .consumer-search-item {
+        margin-left: 15px;
+
+        .example-card {
+            width: 480px;
+          }
+          
+          .example-header-image {
+            background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+            background-size: cover;
+          }
+    }
+}

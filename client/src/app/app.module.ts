@@ -16,6 +16,7 @@ import { InternalHomeService } from './services/internal-home.service';
 import { Web3Service } from './services/web3.service';
 import { DataService } from './services/data.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ConsumerService } from './services/consumer.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AuthenticationGuard,
     WalletService,
     { provide: HomeService, useClass: InternalHomeService },
-    Web3Service, DataService
+    Web3Service, DataService, ConsumerService
   ],
   bootstrap: [AppComponent],
 })

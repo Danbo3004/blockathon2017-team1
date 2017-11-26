@@ -15,6 +15,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NgUploaderComponent } from './common/ng-uploader/ng-uploader.component';
 import { FormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
+import { TruncateModule } from 'ng2-truncate';
 
 @NgModule({
   imports: [
@@ -23,7 +25,7 @@ import { FormsModule } from '@angular/forms';
     SharedModule, MatSelectModule,
     MatFormFieldModule, MatInputModule,
     MatButtonModule, MatCheckboxModule,
-    FormsModule
+    FormsModule, MatCardModule, TruncateModule
   ],
   declarations: [HomeListComponent, DashboardComponent, SetupHomeStepsComponent,
     HostLayoutComponent, EditHomeComponent, ViewHomeComponent, NgUploaderComponent],
