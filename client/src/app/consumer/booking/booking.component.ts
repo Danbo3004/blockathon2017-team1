@@ -26,7 +26,6 @@ export class BookingComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['home'] && changes['home'].currentValue) {
-      this.home.capacity.guest = 6;
       this.rangeGuests = [];
       for (let i = 1; i <= this.home.capacity.guest; i++) {
         this.rangeGuests.push(i);
