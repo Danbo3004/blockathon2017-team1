@@ -9,13 +9,13 @@ import { Subject } from 'rxjs/Subject';
 export class ConsumerService extends BaseService {
   public homes: Subject<Home []> = new Subject<Home []>();
   public homesAnnounce$ = this.homes.asObservable();
-  
-  constructor(http: Http) { 
+
+  constructor(http: Http) {
     super(http);
   }
 
   searchHomes (key: string): Observable<Home []> {
-    return this.doGet('homes').map(jsons => {
+    return this.doGet(`homes?keyword=${key}`).map(jsons => {
       if (!jsons || !jsons.length) {
         return [];
       }

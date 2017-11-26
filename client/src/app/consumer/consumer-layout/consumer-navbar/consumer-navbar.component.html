@@ -4,7 +4,7 @@
   </div>
   <div class="nine wide column">
     <div class="ui icon input">
-      <input type="text" placeholder="Search...">
+      <input type="text" placeholder="Search..." [(ngModel)]="key" (keyup.enter)="onSearch()">
       <i class="search link icon"></i>
     </div>
     <i class="options icon" (click)="onShowFilter()"></i>
