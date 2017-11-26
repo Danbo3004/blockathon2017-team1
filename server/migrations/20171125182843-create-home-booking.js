@@ -7,6 +7,11 @@ module.exports = {
         autoIncrement: true,
         type: Sequelize.INTEGER
       },
+      HomeId: {
+        allowNull: false,
+        autoIncrement: true,
+        type: Sequelize.INTEGER
+      },
       contractAddress: {
         allowNull: false,
         primaryKey: true,
