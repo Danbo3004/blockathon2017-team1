@@ -34,7 +34,6 @@ export abstract class HomeService {
           if (error) {
             reject(error);
           } else {
-            console.log('created', log);
             home.contractAddress = log.args._contractAddress;
             resolve(home);
           }
@@ -60,7 +59,6 @@ export abstract class HomeService {
   }
 
   public updateCapacity(home: Home): Observable<Home> {
-    console.log('update capacity', home, home.contractAddress);
     const data = HomeContract.at(home.contractAddress).updateCapacity.getData(home.capacity.guest,
       home.capacity.bed, home.capacity.bedroom, home.capacity.bath);
     return this.authenticationService.sendTransactionTo(home.contractAddress, data, this.estimatedGas).flatMap(hash => {
