@@ -21,12 +21,14 @@ import { TruncateModule } from 'ng2-truncate';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   imports: [
     CommonModule, RouterModule, MatIconModule, SharedModule, StarRatingModule.forRoot(),
     MatFormFieldModule, MatInputModule, MatSelectModule, MatCardModule, BrowserAnimationsModule,
-    MatButtonModule, MatCheckboxModule, MatIconModule, TruncateModule, FormsModule, HttpModule
+    MatButtonModule, MatCheckboxModule, MatIconModule, TruncateModule, FormsModule, HttpModule,
+    MatSnackBarModule
   ],
   declarations: [ConsumerComponent, ConsumerNavbarComponent, ConsumerLayoutComponent,
     ConsumerSearchListComponent, ConsumerDetailComponent, BookingComponent, ConsumerSearchItemComponent],

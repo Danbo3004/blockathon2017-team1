@@ -4,6 +4,7 @@ import { Home, StepList } from '../../../models/home';
 import { HomeService } from '../../../services/home.service';
 import { DataService } from '../../../services/data.service';
 import { ViewChild } from '@angular/core/src/metadata/di';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-edit-home',
@@ -22,7 +23,8 @@ export class EditHomeComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private homeService: HomeService,
-    private dataService: DataService) { }
+    private dataService: DataService,
+    public snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -41,6 +43,7 @@ export class EditHomeComponent implements OnInit {
         .flatMap(home => this.homeService.updateFeature(home))
         .subscribe(home => {
           console.log(home);
+          this.snackBar.open('Thanks for register. Your home will available shortly in search after few minuteus!');
         }, error => console.error(error));
     }
   }

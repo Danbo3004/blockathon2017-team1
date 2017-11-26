@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Home } from '../../models/home';
 import { HomeService } from '../../services/home.service';
+import { MatSnackBar } from '@angular/material';
+
 declare const $: any;
 
 @Component({
@@ -15,18 +17,18 @@ export class BookingComponent implements OnInit, OnChanges {
   checkInTime = 0;
   checkOutTime = 0;
   duration = 0;
-  rangeGuests: number [] = [];
+  rangeGuests: number[] = [];
   guests: number = 1;
 
-  constructor(private homeService: HomeService) { 
+  constructor(private homeService: HomeService, public snackBar: MatSnackBar) {
     this.home.price = 1;
   }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['home'] && changes['home'].currentValue) {
       this.home.capacity.guest = 6;
-      this.rangeGuests  = [];
-      for (let i =1; i <= this.home.capacity.guest; i++) {
+      this.rangeGuests = [];
+      for (let i = 1; i <= this.home.capacity.guest; i++) {
         this.rangeGuests.push(i);
       }
     }
@@ -72,6 +74,7 @@ export class BookingComponent implements OnInit, OnChanges {
   onBooking() {
     this.homeService.bookHome(this.home, this.checkInTime, this.checkOutTime - this.checkInTime).subscribe(data => {
       console.log(data);
+      this.snackBar.open('Your request in processing');
     })
   }
 }
